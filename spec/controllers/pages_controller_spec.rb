@@ -12,9 +12,9 @@ RSpec.describe PagesController, type: :controller do
   }
 
   describe 'GET index' do
-    it 'redirects to the base page' do
+    it 'renders the base page' do
       get :index
-      expect(response).to redirect_to Page.base
+      expect(assigns(:page)).to eq(base)
     end
   end
 

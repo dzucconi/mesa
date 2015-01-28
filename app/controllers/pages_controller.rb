@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   # GET /
   def index
-    redirect_to Page.base
+    @page = Page.base
+    render template: 'pages/show'
   end
 
   # GET /1
