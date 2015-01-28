@@ -1,0 +1,30 @@
+@import './common'
+
+input[type='text'],
+textarea
+  width: 100%
+  display: block
+  @include sans-serif-font()
+  +appearance(none)
+  margin: $unit 0
+  border: 1px solid $light-blue-color
+  background-color: $lighter-blue-color
+  padding: ($unit / 2)
+  font-size: 1.6rem
+  &:focus
+    border-color: yellow
+
+.button,
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button']
+  display: inline-block
+  padding: ($unit  / 2) $unit
+  text-align: center
+  text-decoration: none
+  border: 2px solid black
+  cursor: pointer
+  font-size: 1.6rem
+  font-weight: bold
+  background-color: transparent

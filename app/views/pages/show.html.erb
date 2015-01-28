@@ -1,0 +1,11 @@
+<% content_for(:title) { @page.title } %>
+
+<nav class='actions'>
+  <% unless @page.index? %>
+    <%= link_to 'Index', :root %>
+    <span class='meta-sep'>|</span>
+  <% end %>
+  <%= link_to 'Δ', edit_page_path(@page) %>
+</nav>
+
+<%= @page.to_html.html_safe %>

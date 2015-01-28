@@ -1,0 +1,1 @@
+Page.create({ title: 'Index' })
