@@ -34,6 +34,10 @@ RSpec.describe Page, type: :model do
       expect(html).to include '<strong>Impression: Sunrise</strong>'
       expect(html).to include '</p>'
     end
+
+    it 'returns an empty HTML document when content is nil' do
+      expect(Page.new.to_html).to eql "\n"
+    end
   end
 
   describe '#base' do

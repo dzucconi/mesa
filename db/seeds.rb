@@ -1,1 +1,1 @@
-Page.create({ slug: 'index', title: 'Index' })
+Page.create({ slug: 'index', title: 'Index', content: '' })

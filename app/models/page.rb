@@ -29,6 +29,6 @@ class Page < ActiveRecord::Base
   end
 
   def to_html
-    Kramdown::Document.new(content).to_html
+    Kramdown::Document.new(content || '').to_html
   end
 end
