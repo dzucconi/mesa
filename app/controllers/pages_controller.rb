@@ -1,4 +1,9 @@
 class PagesController < ApplicationController
+  # GET /all
+  def all
+    @pages = Page.all
+  end
+
   # GET /
   def index
     @page = Page.base

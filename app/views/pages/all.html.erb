@@ -1,0 +1,5 @@
+<% @pages.each do |page| %>
+  <%= content_tag_for :div, page do %>
+    <%= link_to "#{page} /#{page.slug}", page %>
+  <% end %>
+<% end %>

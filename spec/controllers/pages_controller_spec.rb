@@ -11,6 +11,13 @@ RSpec.describe PagesController, type: :controller do
     }
   }
 
+  describe 'GET all' do
+    it 'renders the list of all pages' do
+      get :all
+      expect(assigns(:pages).size).to eq 2
+    end
+  end
+
   describe 'GET index' do
     it 'renders the base page' do
       get :index
