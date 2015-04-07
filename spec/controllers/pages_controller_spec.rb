@@ -38,6 +38,8 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'GET new' do
+    before { auth }
+
     it 'news up a Page, titlizing the ID' do
       get :new, id: 'nearly-there'
       expect(assigns(:page).title).to eql 'Nearly There'
@@ -45,6 +47,8 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'GET edit' do
+    before { auth }
+
     it 'tries to find the requested edit Page' do
       get :edit, id: page.slug
       expect(assigns(:page)).to eq(page)
@@ -57,6 +61,8 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'POST create' do
+    before { auth }
+
     it 'creates a Page' do
       expect {
         post :create, page: valid_attributes
@@ -76,6 +82,8 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'PUT update' do
+    before { auth }
+
     it 'updates the requested Page' do
       put :update, id: page.id, page: { title: 'Nameless shadow' }
       page.reload
@@ -85,6 +93,8 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'DELETE destroy' do
+    before { auth }
+
     it 'destroys the requested Page' do
       expect {
         delete :destroy, id: page.id

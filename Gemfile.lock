@@ -81,6 +81,9 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     erubis (2.7.0)
     execjs (2.2.2)
     fabrication (2.12.2)
@@ -112,6 +115,8 @@ GEM
       slop (~> 3.4, >= 3.4.5)
     pg (0.18.1)
     powerpack (0.0.9)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -218,11 +223,13 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   compass-rails
+  dotenv-rails
   fabrication
   friendly_id (~> 5.1.0)
   jquery-rails
   kramdown (~> 1.5.0)
   pg
+  puma
   rails (= 4.2.0)
   rails_12factor
   rspec-rails (~> 3.0)

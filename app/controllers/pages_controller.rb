@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], only: %i(new edit create update destroy)
+
   # GET /all
   def all
     @pages = Page.all
