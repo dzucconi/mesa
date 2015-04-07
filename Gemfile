@@ -28,6 +28,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'fabrication'
   gem 'webmock'
+  gem 'dotenv-rails'
 end
 
 group :production do
