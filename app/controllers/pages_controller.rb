@@ -19,6 +19,9 @@ class PagesController < ApplicationController
 
   # GET /new
   def new
+    @page = Page.find_by_slug!(params[:id])
+    redirect_to edit_page_path(@page), notice: 'Already exists'
+  rescue ActiveRecord::RecordNotFound
     @page = Page.new slug: params[:id], title: params[:id].titleize
   end
 

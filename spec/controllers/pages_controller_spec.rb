@@ -44,6 +44,11 @@ RSpec.describe PagesController, type: :controller do
       get :new, id: 'nearly-there'
       expect(assigns(:page).title).to eql 'Nearly There'
     end
+
+    it 'redirects to the edit action if the Page already exists' do
+      get :new, id: page.slug
+      expect(response).to redirect_to action: :edit, id: page.slug
+    end
   end
 
   describe 'GET edit' do
