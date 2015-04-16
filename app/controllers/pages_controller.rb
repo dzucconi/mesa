@@ -1,15 +1,10 @@
 class PagesController < ApplicationController
-  http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], only: %i(new edit create update destroy)
-
-  # GET /all
-  def all
-    @pages = Page.all
-  end
+  before_filter :find_namespace
 
   # GET /
   def index
-    @page = Page.base
-    render template: 'pages/show'
+    @pages = @namespace.pages
+    render template: 'namespaces/show'
   end
 
   # GET /1
@@ -19,10 +14,10 @@ class PagesController < ApplicationController
 
   # GET /new
   def new
-    @page = Page.find_by_slug!(params[:id])
-    redirect_to edit_page_path(@page), notice: 'Already exists'
+    @page = @namespace.pages.find_by_slug!(params[:id])
+    redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Already exists'
   rescue ActiveRecord::RecordNotFound
-    @page = Page.new slug: params[:id], title: params[:id].titleize
+    @page = @namespace.pages.new slug: params[:id], title: params[:id].titleize
   end
 
   # GET /1/edit
@@ -32,9 +27,9 @@ class PagesController < ApplicationController
 
   # POST /
   def create
-    @page = Page.new(page_params)
+    @page = @namespace.pages.new(page_params)
     if @page.save
-      redirect_to @page, notice: 'Created'
+      redirect_to namespace_page_path(@namespace, @page), notice: 'Created'
     else
       render :new
     end
@@ -42,9 +37,9 @@ class PagesController < ApplicationController
 
   # PATCH/PUT /1
   def update
-    @page = Page.find(params[:id])
+    @page = @namespace.pages.find(params[:id])
     if @page.update(page_params)
-      redirect_to @page, notice: 'Updated'
+      redirect_to namespace_page_path(@namespace, @page), notice: 'Updated'
     else
       render :edit
     end
@@ -52,9 +47,9 @@ class PagesController < ApplicationController
 
   # DELETE /1
   def destroy
-    @page = Page.find(params[:id])
+    @page = @namespace.pages.find(params[:id])
     @page.destroy
-    redirect_to Page.base, notice: 'Deleted'
+    redirect_to @namespace, notice: 'Deleted'
   end
 
   # GET /1/source
@@ -70,10 +65,16 @@ class PagesController < ApplicationController
     params.require(:page).permit(:slug, :title, :content)
   end
 
+  def find_namespace
+    @namespace = Namespace.find_by_slug!(params[:namespace_id])
+  rescue
+    redirect_to new_namespace_path name: params[:namespace_id]
+  end
+
   def find_with_redirect
-    @page = Page.find_by_slug!(params[:id])
+    @page = @namespace.pages.find_by_slug!(params[:id])
     yield if block_given?
   rescue ActiveRecord::RecordNotFound
-    redirect_to new_page_path id: params[:id]
+    redirect_to new_namespace_page_path(@namespace, id: params[:id])
   end
 end

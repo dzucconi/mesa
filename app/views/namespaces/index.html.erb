@@ -1,0 +1,5 @@
+<ul>
+  <%= content_tag_for :li, @namespaces do |namespace| %>
+    <%= link_to namespace, namespace.name %>
+  <% end %>
+</ul>

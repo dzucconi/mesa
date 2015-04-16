@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'namespaces#index'
 
-  resources :pages, path: '' do
-    collection do
-      get 'all'
-    end
+  get 'new' => 'namespaces#new'
 
-    member do
-      get 'source'
+  resources :namespaces, path: '' do
+    resources :pages, path: '' do
+      member do
+        get 'source'
+      end
     end
   end
 end

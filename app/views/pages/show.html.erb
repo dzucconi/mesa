@@ -1,11 +1,11 @@
 <% content_for(:title) { @page.title } %>
 
 <nav class='actions'>
-  <% unless @page.index? %>
-    <%= link_to 'Index', :root %>
-    <span class='meta-sep'>|</span>
-  <% end %>
-  <%= link_to 'Δ', edit_page_path(@page) %>
+  <%= link_to 'Index', :root %>
+  <span class='meta-sep'>|</span>
+  <%= link_to @namespace, @namespace %>
+  <span class='meta-sep'>|</span>
+  <%= link_to 'Δ', edit_namespace_page_path(@namespace, @page) %>
 </nav>
 
 <%= @page.to_html.html_safe %>
