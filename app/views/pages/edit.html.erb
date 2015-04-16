@@ -1,10 +1,10 @@
 <h1>
   Editing
-  <%= link_to @page, @page %>
+  <%= link_to @page, namespace_page_path(@namespace, @page) %>
 </h1>
 
 <%= render 'form' %>
 
-<% unless @page.index? %>
-  <%= link_to 'Delete', @page, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<hr>
+
+<%= link_to 'Delete', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' } %>

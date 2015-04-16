@@ -2,27 +2,22 @@
 #
 # Table name: pages
 #
-#  id         :integer          not null, primary key
-#  slug       :string
-#  title      :text
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  slug         :string
+#  title        :text
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  namespace_id :integer
 #
 
 class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
 
-  BASE = 'index'
+  validates_presence_of :namespace_id
 
-  def self.base
-    find_by_slug BASE
-  end
-
-  def index?
-    slug == BASE
-  end
+  belongs_to :namespace
 
   def to_s
     title

@@ -1,8 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
-  let!(:page) { Fabricate(:page) }
-  let!(:base) { Fabricate(:page, slug: 'index') }
+  let!(:namespace) {
+    Fabricate(:namespace)
+  }
+
+  let!(:page) {
+    Fabricate(:page, namespace: namespace)
+  }
+
   let(:valid_attributes) {
     {
       slug: 'new-dimensions-of-disparity',
@@ -11,29 +17,22 @@ RSpec.describe PagesController, type: :controller do
     }
   }
 
-  describe 'GET all' do
-    it 'renders the list of all pages' do
-      get :all
-      expect(assigns(:pages).size).to eq 2
-    end
-  end
-
   describe 'GET index' do
-    it 'renders the base page' do
-      get :index
-      expect(assigns(:page)).to eq(base)
+    it 'gets all the pages' do
+      get :index, namespace_id: namespace.slug
+      expect(assigns(:pages)).to eq([page])
     end
   end
 
   describe 'GET show' do
     it 'tries to find the requested Page' do
-      get :show, id: page.slug
+      get :show, namespace_id: namespace.slug, id: page.slug
       expect(assigns(:page)).to eq(page)
     end
 
     it 'redirects if it cannot' do
-      get :show, id: 'non-existent'
-      expect(response).to redirect_to action: :new, id: 'non-existent'
+      get :show, namespace_id: namespace.slug, id: 'non-existent'
+      expect(response).to redirect_to action: :new, namespace_id: namespace.slug, id: 'non-existent'
     end
   end
 
@@ -41,13 +40,13 @@ RSpec.describe PagesController, type: :controller do
     before { auth }
 
     it 'news up a Page, titlizing the ID' do
-      get :new, id: 'nearly-there'
+      get :new, namespace_id: namespace.slug, id: 'nearly-there'
       expect(assigns(:page).title).to eql 'Nearly There'
     end
 
     it 'redirects to the edit action if the Page already exists' do
-      get :new, id: page.slug
-      expect(response).to redirect_to action: :edit, id: page.slug
+      get :new, namespace_id: namespace.slug, id: page.slug
+      expect(response).to redirect_to action: :edit, namespace_id: namespace.slug, id: page.slug
     end
   end
 
@@ -55,13 +54,13 @@ RSpec.describe PagesController, type: :controller do
     before { auth }
 
     it 'tries to find the requested edit Page' do
-      get :edit, id: page.slug
+      get :edit, namespace_id: namespace.slug, id: page.slug
       expect(assigns(:page)).to eq(page)
     end
 
     it 'redirects if it cannot' do
-      get :edit, id: 'non-existent'
-      expect(response).to redirect_to action: :new, id: 'non-existent'
+      get :edit, namespace_id: namespace.slug, id: 'non-existent'
+      expect(response).to redirect_to action: :new, namespace_id: namespace.slug, id: 'non-existent'
     end
   end
 
@@ -70,19 +69,19 @@ RSpec.describe PagesController, type: :controller do
 
     it 'creates a Page' do
       expect {
-        post :create, page: valid_attributes
+        post :create, namespace_id: namespace.slug, page: valid_attributes
       }.to change(Page, :count).by 1
     end
 
     it 'assigns the newly created Page as @page' do
-      post :create, page: valid_attributes
+      post :create, namespace_id: namespace.slug, page: valid_attributes
       expect(assigns(:page)).to be_a Page
       expect(assigns(:page)).to be_persisted
     end
 
     it 'redirects to the created Page' do
-      post :create, page: valid_attributes
-      expect(response).to redirect_to Page.last
+      post :create, namespace_id: namespace.slug, page: valid_attributes
+      expect(response).to redirect_to [namespace, Page.last]
     end
   end
 
@@ -90,10 +89,10 @@ RSpec.describe PagesController, type: :controller do
     before { auth }
 
     it 'updates the requested Page' do
-      put :update, id: page.id, page: { title: 'Nameless shadow' }
+      put :update, id: page.id, namespace_id: namespace.slug, page: { title: 'Nameless shadow' }
       page.reload
       expect(page.title).to eql 'Nameless shadow'
-      expect(response).to redirect_to page
+      expect(response).to redirect_to [namespace, page]
     end
   end
 
@@ -102,14 +101,14 @@ RSpec.describe PagesController, type: :controller do
 
     it 'destroys the requested Page' do
       expect {
-        delete :destroy, id: page.id
+        delete :destroy, namespace_id: namespace.slug, id: page.id
       }.to change(Page, :count).by(-1)
     end
   end
 
   describe 'GET source' do
     it 'renders the Markdown source of the requested Page' do
-      get :source, id: page.slug
+      get :source, namespace_id: namespace.slug, id: page.slug
       expect(response.body).to eql page.content
     end
   end

@@ -2,19 +2,19 @@
 #
 # Table name: pages
 #
-#  id         :integer          not null, primary key
-#  slug       :string
-#  title      :text
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  slug         :string
+#  title        :text
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  namespace_id :integer
 #
 
 require 'rails_helper'
 
 RSpec.describe Page, type: :model do
   let!(:page) { Fabricate(:page) }
-  let!(:base) { Fabricate(:page, slug: 'index') }
 
   it 'has a valid fabricator' do
     expect(page).to be_valid
@@ -37,12 +37,6 @@ RSpec.describe Page, type: :model do
 
     it 'returns an empty HTML document when content is nil' do
       expect(Page.new.to_html).to eql "\n"
-    end
-  end
-
-  describe '#base' do
-    it 'finds the base object' do
-      expect(Page.base).to eq base
     end
   end
 end

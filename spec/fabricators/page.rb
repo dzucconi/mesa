@@ -1,5 +1,6 @@
 Fabricator(:page) do
   title 'Impression, Sunrise'
+  namespace { Fabricate(:namespace) }
   slug { |attrs| attrs[:title].parameterize }
   content '
     *Although* it seems that the sun is the brightest spot on the canvas,
