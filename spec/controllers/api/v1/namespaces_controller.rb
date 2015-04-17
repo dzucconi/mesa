@@ -25,7 +25,7 @@ RSpec.describe Api::V1::NamespacesController, type: :controller do
       parsed = JSON.parse(response.body)
       expect(parsed['id']).to eq(namespace.id)
       expect(parsed['name']).to eq(namespace.name)
-      expect(parsed['_links'].keys).to eq(%w(self pages))
+      expect(parsed['_links'].keys).to eq(%w(self pages page))
     end
   end
 end
