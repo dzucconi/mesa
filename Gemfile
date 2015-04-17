@@ -11,6 +11,8 @@ gem 'compass-rails'
 gem 'jquery-rails'
 gem 'kramdown', '~> 1.5.0'
 gem 'friendly_id', '~> 5.1.0'
+gem 'kaminari', '~> 0.16.3'
+gem 'active_model_serializers', '~> 0.9.3'
 
 group :development do
   gem 'annotate'
