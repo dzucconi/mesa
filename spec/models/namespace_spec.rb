@@ -19,8 +19,8 @@ RSpec.describe Namespace, type: :model do
   end
 
   describe '#to_s' do
-    it 'returns the path as a String' do
-      expect("#{namespace}").to eql '/default'
+    it 'returns the name' do
+      expect("#{namespace}").to eql 'default'
     end
   end
 end

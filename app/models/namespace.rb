@@ -16,6 +16,6 @@ class Namespace < ActiveRecord::Base
   friendly_id :name
 
   def to_s
-    "/#{slug}"
+    name
   end
 end

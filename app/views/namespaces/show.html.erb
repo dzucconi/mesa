@@ -4,8 +4,6 @@
   <%= link_to 'A', :root %>
 </nav>
 
-<h1><%= @namespace %></h1>
-
 <ul>
   <%= content_tag_for :li, @pages do |page| %>
     <%= link_to page, namespace_page_path(@namespace, page) %>
