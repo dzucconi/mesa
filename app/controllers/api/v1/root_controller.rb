@@ -7,6 +7,10 @@ module Api
             self: { href: api_root_url },
             namespaces: {
               href: api_namespaces_url
+            },
+            namespace: {
+              href: CGI.unescape(api_namespace_url('{id}')),
+              templated: true
             }
           }
         }
