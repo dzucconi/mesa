@@ -15,6 +15,9 @@ class Namespace < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name
 
+  validates :name, presence: true
+  validates :slug, presence: true
+
   def to_s
     name
   end
