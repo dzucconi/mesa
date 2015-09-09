@@ -24,9 +24,15 @@ h4,
 h5,
 h6,
 p,
-ul,
-section
+ul
   margin: $unit 0
+  &:first-child
+    margin-top: 0
+  &:last-child
+    margin-bottom: 0
+
+section
+  margin: ($unit * 2) 0
   &:first-child
     margin-top: 0
   &:last-child
@@ -55,3 +61,7 @@ hr
   background-color: black
   margin: ($unit * 2) 0
   border: none
+
+img
+  max-width: 100%
+  vertical-align: bottom
