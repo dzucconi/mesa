@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::PagesController, type: :controller do
-  let!(:namespace) {
+  let!(:namespace) do
     Fabricate(:namespace)
-  }
+  end
 
-  let!(:page) {
+  let!(:page) do
     Fabricate(:page, namespace: namespace)
-  }
+  end
 
   describe 'GET index' do
     it 'returns the JSON representation of paginated pages belonging to the namespace' do

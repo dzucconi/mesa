@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::NamespacesController, type: :controller do
-  let!(:namespace) {
+  let!(:namespace) do
     Fabricate(:namespace)
-  }
+  end
 
   describe 'GET index' do
     it 'returns the JSON representation of paginated namespaces' do

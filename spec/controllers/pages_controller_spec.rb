@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
-  let!(:namespace) {
+  let!(:namespace) do
     Fabricate(:namespace)
-  }
+  end
 
-  let!(:page) {
+  let!(:page) do
     Fabricate(:page, namespace: namespace)
-  }
+  end
 
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
       slug: 'new-dimensions-of-disparity',
       title: 'New Dimensions of Disparity',
       content: '*Here* we have no neat set of **frames of reference**.'
     }
-  }
+  end
 
   describe 'GET index' do
     it 'gets all the pages' do
@@ -68,9 +68,9 @@ RSpec.describe PagesController, type: :controller do
     before { auth }
 
     it 'creates a Page' do
-      expect {
+      expect do
         post :create, namespace_id: namespace.slug, page: valid_attributes
-      }.to change(Page, :count).by 1
+      end.to change(Page, :count).by 1
     end
 
     it 'assigns the newly created Page as @page' do
@@ -100,9 +100,9 @@ RSpec.describe PagesController, type: :controller do
     before { auth }
 
     it 'destroys the requested Page' do
-      expect {
+      expect do
         delete :destroy, namespace_id: namespace.slug, id: page.id
-      }.to change(Page, :count).by(-1)
+      end.to change(Page, :count).by(-1)
     end
   end
 

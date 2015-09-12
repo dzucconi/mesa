@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe NamespacesController, type: :controller do
-  let!(:namespace) {
+  let!(:namespace) do
     Fabricate(:namespace)
-  }
+  end
 
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     { name: 'non-specific' }
-  }
+  end
 
   describe 'GET index' do
     it 'gets all the namespaces' do
@@ -46,9 +46,9 @@ RSpec.describe NamespacesController, type: :controller do
     before { auth }
 
     it 'creates a Namespace' do
-      expect {
+      expect do
         post :create, namespace: valid_attributes
-      }.to change(Namespace, :count).by 1
+      end.to change(Namespace, :count).by 1
     end
 
     it 'assigns the newly created Namespace as @namespace' do
