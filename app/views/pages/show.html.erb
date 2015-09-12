@@ -8,4 +8,6 @@
   <%= link_to 'Δ', edit_namespace_page_path(@namespace, @page) %>
 </nav>
 
-<%= @page.to_html.html_safe %>
+<div class='page'>
+  <%= @page.to_html.html_safe %>
+</div>

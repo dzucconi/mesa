@@ -3,4 +3,5 @@
  *= require base
  *= require forms
  *= require pages
+ *= require errors
  */

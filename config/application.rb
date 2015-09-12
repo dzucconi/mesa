@@ -12,6 +12,10 @@ Bundler.require(*Rails.groups)
 
 module Mesa
   class Application < Rails::Application
+    config.action_view.field_error_proc = proc { |tag|
+      "<span class='is-with-error'>#{tag}</span>".html_safe
+    }
+
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

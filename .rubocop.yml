@@ -4,6 +4,7 @@ AllCops:
     - vendor/**/*
     - bin/**
     - db/schema.rb
+    - node_modules/**/*
 
 LineLength:
   Enabled: false
@@ -47,13 +48,7 @@ AsciiComments:
 AlignParameters:
   Enabled: false
 
-RescueModifier:
-  Enabled: false
-
 AlignHash:
-  Enabled: false
-
-Blocks:
   Enabled: false
 
 MultilineBlockChain:

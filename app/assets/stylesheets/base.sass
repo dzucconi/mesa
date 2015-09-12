@@ -10,12 +10,14 @@ body
   background-color: white
   color: black
   margin: $unit
-  @include serif-font()
+  +serif-font()
   font-size: $base-font-size
   line-height: $base-line-height
 
 a
   text-decoration: none
+  &, &:visited
+    color: blue
 
 h1,
 h2,
@@ -25,8 +27,15 @@ h5,
 h6,
 p,
 ul,
-section
+pre
   margin: $unit 0
+  &:first-child
+    margin-top: 0
+  &:last-child
+    margin-bottom: 0
+
+section
+  margin: ($unit * 2) 0
   &:first-child
     margin-top: 0
   &:last-child
@@ -39,7 +48,10 @@ h4,
 h5,
 h6
   font-weight: bold
-  @include sans-serif-font()
+  +sans-serif-font()
+
+h1
+  text-decoration: underline
 
 em
   font-style: italic
@@ -48,10 +60,23 @@ strong
   font-weight: bold
 
 pre
-  font-family: monospace
+  padding: ($unit / 2)
+  border: 2px solid black
+pre, code
+  +monospace-font()
+  font-size: 14px
+
+blockquote
+  padding: ($unit / 2)
+  border-left: 2px solid rgba(black, 0.5)
+  font-style: italic
 
 hr
   height: 1px
-  background-color: black
+  background-color: rgba(black, 0.25)
   margin: ($unit * 2) 0
   border: none
+
+img
+  max-width: 100%
+  vertical-align: bottom

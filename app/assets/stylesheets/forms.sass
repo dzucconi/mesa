@@ -2,29 +2,48 @@
 
 input[type='text'],
 textarea
+  +appearance(none)
   width: 100%
   display: block
-  @include sans-serif-font()
-  +appearance(none)
+  +monospace-font()
   margin: $unit 0
-  border: 1px solid $light-blue-color
-  background-color: $lighter-blue-color
-  padding: ($unit / 2)
+  border: none
+  background-color: white
+  // padding: ($unit / 2)
+  padding: 0
   font-size: $base-font-size
   &:focus
-    border-color: yellow
+    outline: none
+    background-color: $lighter-blue-color
 
 .button,
 button,
 input[type='submit'],
 input[type='reset'],
 input[type='button']
+  +appearance(none)
+  +sans-serif-font()
   display: inline-block
-  padding: ($unit  / 2) $unit
+  padding: (($unit  / 2) + 1) $unit ($unit  / 2) $unit
   text-align: center
   text-decoration: none
   border: 2px solid black
   cursor: pointer
   font-size: $base-font-size
   font-weight: bold
+  line-height: 1
   background-color: transparent
+  text-transform: uppercase
+  &, &:visited
+    color: black
+
+  &:focus
+    outline: none
+    color: blue
+    border-color: blue
+
+  &.is-dangerous
+    color: red
+    border-color: red
+
+

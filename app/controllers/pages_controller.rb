@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @page = @namespace.pages.find_by_slug!(params[:id])
     redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Already exists'
   rescue ActiveRecord::RecordNotFound
-    @page = @namespace.pages.new slug: params[:id], title: params[:id].titleize
+    @page = @namespace.pages.new slug: params[:id], title: params[:id].try(:titleize)
   end
 
   # GET /1/edit
