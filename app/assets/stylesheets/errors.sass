@@ -1,0 +1,20 @@
+@import './common'
+
+.errors
+  padding: ($unit / 2)
+  text-align: center
+  background-color: pink
+  color: red
+  > li
+    display: inline-block
+    +monospace-font()
+    &:after
+      content: ', '
+    &:last-child:after
+      content: '.'
+
+.is-with-error > input,
+.is-with-error > textarea
+  background-color: pink
+  +input-placeholder
+    color: red

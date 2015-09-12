@@ -1,16 +1,5 @@
 <%= form_for([@namespace, @page]) do |f| %>
-  <% if @page.errors.any? %>
-    <div id='error-explanation'>
-      <h2>
-        <%= pluralize(@page.errors.count, 'error') %> prohibited this page from being saved:
-      </h2>
-      <ul>
-        <% @page.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'common/errors', resource: @page %>
 
   <%= f.hidden_field :slug %>
 
@@ -23,6 +12,6 @@
   </div>
 
   <div class='form-actions'>
-    <%= f.submit %>
+    <%= f.submit 'Save' %>
   </div>
 <% end %>

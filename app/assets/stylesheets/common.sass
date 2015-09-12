@@ -10,8 +10,22 @@ $light-blue-color: #c7cfde
 $lighter-blue-color: #f5f7fb
 
 // Mixins
-@mixin serif-font()
+=serif-font()
   font-family: 'Times New Roman', times, serif
+  +font-smoothing(subpixel-antialiased)
 
-@mixin sans-serif-font()
+=sans-serif-font()
   font-family: sans-serif
+  +font-smoothing(antialiased)
+
+=monospace-font()
+  font-family: 'Source Code Pro', monospace
+  +font-smoothing(subpixel-antialiased)
+
+=font-smoothing($value: antialiased)
+  @if $value == antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  @else
+    -webkit-font-smoothing: subpixel-antialiased
+    -moz-osx-font-smoothing: auto

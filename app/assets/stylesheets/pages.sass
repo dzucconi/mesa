@@ -11,3 +11,16 @@
   @include sans-serif-font()
   a
     color: black
+
+// Rendered page
+.page
+  ul, ol
+    li
+      position: relative
+      margin: 0 0 0 1em
+      &:before
+        position: absolute
+        right: 100%
+        content: '—'
+        text-align: right
+        color: rgba(black, 0.5)
