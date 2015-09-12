@@ -1,0 +1,28 @@
+{
+  "name": "mesa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzucconi/mesa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dzucconi/mesa/issues"
+  },
+  "homepage": "https://github.com/dzucconi/mesa#readme",
+  "dependencies": {
+    "browserify": "^11.0.1",
+    "browserify-incremental": "^3.0.1",
+    "dropzone": "^4.0.1",
+    "jquery": "^2.1.4",
+    "jquery-ujs": "^1.0.4",
+    "mousetrap": "^1.5.3",
+    "selection.js": "^1.0.0"
+  }
+}
