@@ -17,5 +17,11 @@ module Mesa
     }
 
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |generate|
+      generate.stylesheets false
+      generate.javascripts false
+      generate.helpers false
+    end
   end
 end
