@@ -1,4 +1,4 @@
-ruby '2.2.0'
+ruby '2.2.1'
 source 'https://rubygems.org'
 
 gem 'puma'
@@ -13,6 +13,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 0.16.3'
 gem 'active_model_serializers', '~> 0.9.3'
 gem 'browserify-rails'
+gem 'aws-sdk', '~> 2.0'
 
 group :development do
   gem 'annotate'
@@ -31,6 +32,7 @@ group :test do
   gem 'fabrication'
   gem 'webmock'
   gem 'dotenv-rails'
+  gem 'webmock'
 end
 
 group :production do

@@ -19,10 +19,10 @@
   "dependencies": {
     "browserify": "^11.0.1",
     "browserify-incremental": "^3.0.1",
-    "dropzone": "^4.0.1",
     "jquery": "^2.1.4",
     "jquery-ujs": "^1.0.4",
     "mousetrap": "^1.5.3",
+    "ramda": "^0.17.1",
     "selection.js": "^1.0.0"
   }
 }

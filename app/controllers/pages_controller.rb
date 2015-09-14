@@ -28,8 +28,9 @@ class PagesController < ApplicationController
   # POST /
   def create
     @page = @namespace.pages.new(page_params)
+
     if @page.save
-      redirect_to namespace_page_path(@namespace, @page), notice: 'Created'
+      redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Created'
     else
       render :new
     end
