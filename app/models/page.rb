@@ -20,6 +20,13 @@ class Page < ActiveRecord::Base
   validates :slug, presence: true
 
   belongs_to :namespace
+  has_many :uploads
+
+  before_validation :ensure_slug
+
+  def ensure_slug
+    self.slug = title.parameterize if slug.blank?
+  end
 
   def to_s
     title

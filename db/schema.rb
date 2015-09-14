@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412182427) do
+ActiveRecord::Schema.define(version: 20150913153212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,4 +51,16 @@ ActiveRecord::Schema.define(version: 20150412182427) do
   add_index "pages", ["namespace_id"], name: "index_pages_on_namespace_id", using: :btree
   add_index "pages", ["slug", "namespace_id"], name: "index_pages_on_slug_and_namespace_id", unique: true, using: :btree
 
+  create_table "uploads", force: :cascade do |t|
+    t.string   "file_name"
+    t.string   "content_type"
+    t.integer  "file_size"
+    t.integer  "page_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "uploads", ["page_id"], name: "index_uploads_on_page_id", using: :btree
+
+  add_foreign_key "uploads", "pages"
 end

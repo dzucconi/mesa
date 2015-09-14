@@ -13,11 +13,16 @@ Rails.application.routes.draw do
 
   get 'new' => 'namespaces#new'
 
+  # Occupy remaining root namespace
+  # (place route declarations above this)
+
   resources :namespaces, path: '' do
     resources :pages, path: '' do
       member do
         get 'source'
       end
+
+      resources :uploads, only: [:index, :create]
     end
   end
 end

@@ -79,9 +79,9 @@ RSpec.describe PagesController, type: :controller do
       expect(assigns(:page)).to be_persisted
     end
 
-    it 'redirects to the created Page' do
+    it 'redirects to the edit Page' do
       post :create, namespace_id: namespace.slug, page: valid_attributes
-      expect(response).to redirect_to [namespace, Page.last]
+      expect(response).to redirect_to action: :edit, namespace_id: namespace.slug, id: Page.last.slug
     end
   end
 
