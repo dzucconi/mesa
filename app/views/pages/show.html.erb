@@ -5,7 +5,7 @@
   <span class='meta-sep'>/</span>
   <%= link_to @namespace, @namespace %>
   <span class='meta-sep'>|</span>
-  <%= link_to 'Δ', edit_namespace_page_path(@namespace, @page) %>
+  <%= link_to 'Δ', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
 </nav>
 
 <div class='page'>
