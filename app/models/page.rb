@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
   validates :slug, presence: true
 
   belongs_to :namespace
-  has_many :uploads
+  has_many :uploads, dependent: :destroy
 
   before_validation :ensure_slug
 
