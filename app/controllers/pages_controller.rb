@@ -40,7 +40,11 @@ class PagesController < ApplicationController
   def update
     @page = @namespace.pages.find(params[:id])
     if @page.update(page_params)
-      redirect_to namespace_page_path(@namespace, @page), notice: 'Updated'
+      if request.xhr?
+        render json: @page
+      else
+        redirect_to namespace_page_path(@namespace, @page), notice: 'Updated'
+      end
     else
       render :edit
     end
