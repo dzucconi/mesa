@@ -1,19 +1,15 @@
-<%= form_for([@namespace, @page]) do |f| %>
+<%= form_for [@namespace, @page], html: {
+  class: 'js-form', data: { upload: @page.persisted? ? namespace_page_uploads_path(@namespace, @page) : '' }
+} do |f| %>
   <%= render 'common/errors', resource: @page %>
 
   <%= f.hidden_field :slug %>
 
-  <div class='form-field'>
-    <%= f.text_field :title, placeholder: 'Title' %>
-  </div>
+  <%= f.text_field :title, placeholder: 'Title', autofocus: !@page.persisted? %>
 
   <% if @page.persisted? %>
-    <div class='form-field'>
-      <%= f.text_area :content, placeholder: 'Page Content', rows: 20 %>
-    </div>
+    <%= f.text_area :content, placeholder: 'Page Content', rows: 20, autofocus: @page.persisted?, class: 'js-editor' %>
   <% end %>
 
-  <div class='form-actions'>
-    <%= f.submit 'Save' %>
-  </div>
+  <%= f.submit 'Save', class: 'is-fixed' %>
 <% end %>

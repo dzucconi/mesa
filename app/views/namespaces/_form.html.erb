@@ -1,11 +1,7 @@
 <%= form_for(@namespace) do |f| %>
   <%= render 'common/errors', resource: @namespace %>
 
-  <div class='form-field'>
-    <%= f.text_field :name, placeholder: 'Name', value: params[:name] %>
-  </div>
+  <%= f.text_field :name, placeholder: 'Name', value: params[:name] %>
 
-  <div class='form-actions'>
-    <%= f.submit 'Save' %>
-  </div>
+  <%= f.submit 'Save' %>
 <% end %>

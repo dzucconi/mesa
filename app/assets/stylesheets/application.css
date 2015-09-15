@@ -1,6 +1,7 @@
 /*
  *= require_self
  *= require base
+ *= require layout
  *= require forms
  *= require pages
  *= require errors
