@@ -16,18 +16,6 @@ RSpec.describe NamespacesController, type: :controller do
     end
   end
 
-  describe 'GET show' do
-    it 'tries to find the requested Namespace' do
-      get :show, id: namespace.slug
-      expect(assigns(:namespace)).to eq(namespace)
-    end
-
-    it 'redirects if it cannot' do
-      get :show, id: 'non-existent'
-      expect(response).to redirect_to action: :new, name: 'non-existent'
-    end
-  end
-
   describe 'GET new' do
     before { auth }
 

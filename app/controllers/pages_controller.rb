@@ -1,6 +1,12 @@
 class PagesController < ApplicationController
   before_filter :find_namespace
-  before_filter :authenticate!, except: [:show, :source]
+  before_filter :authenticate!, except: [:index, :show, :source]
+
+  # GET /
+  def index
+    @pages = @namespace.pages
+    render template: 'namespaces/show'
+  end
 
   # GET /:namespace_id/:id
   def show

@@ -6,14 +6,6 @@ class NamespacesController < ApplicationController
     @namespaces = Namespace.all
   end
 
-  # GET /:id
-  def show
-    find_with_redirect do
-      authenticate! if @namespace.locked?
-      @pages = @namespace.pages
-    end
-  end
-
   # GET /:id/edit
   def edit
     find_with_redirect
