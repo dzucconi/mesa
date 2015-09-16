@@ -1,7 +1,9 @@
 <%= form_for(@namespace) do |f| %>
   <%= render 'common/errors', resource: @namespace %>
 
-  <%= f.text_field :name, placeholder: 'Name', value: params[:name] %>
+  <%= f.text_field :name, placeholder: 'Name', value: @namespace.name || params[:name], autofocus: true %>
 
-  <%= f.submit 'Save' %>
+  <%= f.select :state, [['Published', :published], ['Locked', :locked]] %>
+
+  <%= f.submit 'Save', class: 'is-fixed' %>
 <% end %>

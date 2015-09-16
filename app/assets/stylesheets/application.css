@@ -3,6 +3,7 @@
  *= require base
  *= require layout
  *= require forms
- *= require pages
  *= require errors
+ *= require namespaces
+ *= require pages
  */

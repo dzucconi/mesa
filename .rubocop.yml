@@ -59,3 +59,6 @@ RedundantSelf:
 
 ParameterLists:
   Max: 7
+
+TrivialAccessors:
+  Enabled: false

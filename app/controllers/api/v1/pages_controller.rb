@@ -19,6 +19,7 @@ module Api
 
       def find_namespace
         @namespace = Namespace.find_by_slug!(params[:namespace_id])
+        authenticate! if @namespace.locked?
       end
     end
   end

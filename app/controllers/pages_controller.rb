@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_filter :find_namespace
+  before_filter :authenticate!, except: [:index, :show, :source]
 
   # GET /
   def index
@@ -7,12 +8,12 @@ class PagesController < ApplicationController
     render template: 'namespaces/show'
   end
 
-  # GET /1
+  # GET /:namespace_id/:id
   def show
     find_with_redirect
   end
 
-  # GET /new
+  # GET /:namespace_id/new
   def new
     @page = @namespace.pages.find_by_slug!(params[:id])
     redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Already exists'
@@ -20,12 +21,12 @@ class PagesController < ApplicationController
     @page = @namespace.pages.new slug: params[:id], title: params[:id].try(:titleize)
   end
 
-  # GET /1/edit
+  # GET /:namespace_id/:id/edit
   def edit
     find_with_redirect
   end
 
-  # POST /
+  # POST /:namespace_id
   def create
     @page = @namespace.pages.new(page_params)
 
@@ -36,7 +37,7 @@ class PagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /1
+  # PATCH/PUT /:namespace_id/:id
   def update
     @page = @namespace.pages.find(params[:id])
     if @page.update(page_params)
@@ -50,14 +51,14 @@ class PagesController < ApplicationController
     end
   end
 
-  # DELETE /1
+  # DELETE /:namespace_id/:id
   def destroy
     @page = @namespace.pages.find(params[:id])
     @page.destroy
     redirect_to @namespace, notice: 'Deleted'
   end
 
-  # GET /1/source
+  # GET /:namespace_id/:id/source
   def source
     find_with_redirect do
       render text: @page.content, content_type: Mime::TEXT
@@ -72,6 +73,7 @@ class PagesController < ApplicationController
 
   def find_namespace
     @namespace = Namespace.find_by_slug!(params[:namespace_id])
+    authenticate! if @namespace.locked?
   rescue
     redirect_to new_namespace_path name: params[:namespace_id]
   end

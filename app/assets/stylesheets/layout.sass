@@ -1,14 +1,18 @@
 @import './common'
 
-.meta-sep
-  margin: 0 1rem
-  +opacity(0.5)
-
 .actions
   position: absolute
   top: $unit
   right: $unit
   @include sans-serif-font()
   z-index: 1
-  a
+
+  > a
+    display: inline-block
     color: black
+    padding: ($unit / 2) $unit
+    &:hover
+      color: rgba(black, 0.5)
+
+  > span
+    color: rgba(black, 0.5)
