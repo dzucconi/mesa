@@ -14,6 +14,7 @@ gem 'kaminari', '~> 0.16.3'
 gem 'active_model_serializers', '~> 0.9.3'
 gem 'browserify-rails'
 gem 'aws-sdk', '~> 2.0'
+gem 'aasm'
 
 group :development do
   gem 'annotate'
