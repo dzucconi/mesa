@@ -1,9 +1,11 @@
-<% content_for(:title) { @namespace } %>
+<% content_for(:title) { @namespace.name } %>
 
 <nav class='actions'>
   <%= link_to 'A', :root %>
   <span class='meta-sep'>/</span>
   <%= link_to '+', new_namespace_page_path(@namespace) %>
+  <span class='meta-sep'>|</span>
+  <%= link_to 'Δ', edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
 </nav>
 
 <ul>

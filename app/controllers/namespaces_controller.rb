@@ -1,11 +1,21 @@
 class NamespacesController < ApplicationController
+  before_filter :authenticate!, except: [:index, :show]
+
   # GET /
   def index
     @namespaces = Namespace.all
   end
 
-  # GET /1
+  # GET /:id
   def show
+    find_with_redirect do
+      authenticate! if @namespace.locked?
+      @pages = @namespace.pages
+    end
+  end
+
+  # GET /:id/edit
+  def edit
     find_with_redirect
   end
 
@@ -27,10 +37,20 @@ class NamespacesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /:id
+  def update
+    @namespace = Namespace.find_by_slug!(params[:id])
+    if @namespace.update(namespace_params)
+      redirect_to @namespace, notice: 'Updated'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def namespace_params
-    params.require(:namespace).permit(:name)
+    params.require(:namespace).permit(:name, :state)
   end
 
   def find_with_redirect

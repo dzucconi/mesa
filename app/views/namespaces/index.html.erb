@@ -1,5 +1,5 @@
-<ul>
-  <%= content_tag_for :li, @namespaces do |namespace| %>
-    <%= link_to namespace, namespace.name %>
-  <% end %>
-</ul>
+<% content_for(:title) { 'Root' } %>
+
+<%= div_for @namespaces do |namespace| %>
+  <%= link_to namespace, namespace, class: "is-#{namespace.state}" %>
+<% end %>

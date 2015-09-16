@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   # (place route declarations above this)
 
   resources :namespaces, path: '' do
-    resources :pages, path: '' do
+    member do
+      get 'edit'
+    end
+
+    resources :pages, path: '', except: [:index] do
       member do
         get 'source'
       end

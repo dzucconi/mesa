@@ -1,6 +1,8 @@
 module Api
   module V1
     class BaseController < ActionController::Base
+      attr_reader :current_user
+
       private
 
       def render_object(object, options = {})
@@ -21,6 +23,14 @@ module Api
           overrides.reverse_merge! plucked
         end
         CGI.unescape(url_for(params: overrides))
+      end
+
+      def authenticate!
+        authenticate_or_request_with_http_basic do |username, password|
+          @current_user = User.new(
+            authenticated: username == ENV['USERNAME'] && password == ENV['PASSWORD']
+          )
+        end
       end
     end
   end
