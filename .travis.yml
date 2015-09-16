@@ -16,3 +16,4 @@ deploy:
     master: damonzucconi-mesa-production
   api_key:
     secure: I+An9rsESNhcH7eGhnHpsq+ExGJjtWJAXUlXokS8sxQKJ5fg7N21wg1JeiSnMza4qQVydZ3gjgZcoX/LGBx5mKaLXwY7lTaU4uTlSaI45Ikncj3mkL7pXjoWvZBcckNxgRMyDCYze4Q9E6fpj6PaRwL2hD5LWghuWcdHe9DG1VY=
+  run: 'rake db:migrate'
