@@ -19,7 +19,7 @@ class Page < ActiveRecord::Base
   validates :title, presence: true
   validates :slug, presence: true
 
-  belongs_to :namespace
+  belongs_to :namespace, touch: true
   has_many :uploads, dependent: :destroy
 
   before_validation :ensure_slug

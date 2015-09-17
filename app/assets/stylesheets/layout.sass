@@ -16,3 +16,21 @@
 
   > span
     color: rgba(black, 0.5)
+
+.item > a
+  display: block
+  &:hover
+    > span
+      text-decoration: underline
+    > time
+      color: black
+  &.is-locked
+    color: red
+
+.item-updated-at
+  margin-left: ($unit / 4)
+  +sans-serif-font()
+  color: lighten(black, 75%)
+  line-height: 1
+  font-size: 12px
+  font-weight: bold

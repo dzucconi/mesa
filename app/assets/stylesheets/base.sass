@@ -1,10 +1,17 @@
 @import './common'
 @import 'compass/reset'
 
+*
+  +selection(yellow, black)
+
+
+html
+  +box-sizing(border-box)
+
 *,
 *:before,
 *:after
-  +box-sizing(border-box)
+  box-sizing: inherit
 
 body
   background-color: white

@@ -1,5 +1,5 @@
 <% content_for(:title) { "Uploads for #{@page.title}" } %>
 
 <%= div_for @uploads do |upload| %>
-  <%= link_to  upload.key, upload.qualified %>
+  <%= link_to upload.key, upload.qualified %>
 <% end %>
