@@ -74,3 +74,19 @@ input[type='button']
     bottom: $unit
     left: $unit
     width: calc(100% - #{$unit * 2})
+
+.editor
+  $button-height: ($base-font-size + $unit + 1 + 4)
+
+  position: absolute
+  top: $unit
+  right: $unit
+  bottom: $unit
+  left: $unit
+  > input[type='text']
+    margin: 0
+  > textarea
+    position: absolute
+    top: $base-font-size + $unit
+    bottom: $button-height + $unit
+    margin: 0

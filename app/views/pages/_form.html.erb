@@ -1,5 +1,5 @@
 <%= form_for [@namespace, @page], html: {
-  class: 'js-form', data: { upload: @page.persisted? ? namespace_page_uploads_path(@namespace, @page) : '' }
+  class: 'editor js-form', data: { upload: @page.persisted? ? namespace_page_uploads_path(@namespace, @page) : '' }
 } do |f| %>
   <%= render 'common/errors', resource: @page %>
 
