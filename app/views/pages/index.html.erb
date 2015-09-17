@@ -1,11 +1,12 @@
 <% content_for(:title) { @namespace.name } %>
 
 <nav class='actions'>
-  <%= link_to 'A', :root %>
-  <span>/</span>
-  <%= link_to 'Δ', edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
-  <span>|</span>
-  <%= link_to '+', new_namespace_page_path(@namespace) %>
+  <%= link_to '🔝', :root %>
+  <%= link_to '🔙', :root %>
+  <br>
+  <%= link_to '🔷', edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
+  <br>
+  <%= link_to '➕', new_namespace_page_path(@namespace) %>
 </nav>
 
 <%= div_for @pages, class: 'item' do |page| %>

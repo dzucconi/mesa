@@ -1,9 +1,11 @@
 <% content_for(:title) { "Editing #{@namespace} / #{@page}" } %>
 
 <div class='actions'>
-  <%= link_to '◀', namespace_page_path(@namespace, @page) %>
-  <span>|</span>
-  <%= link_to 'D', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'is-dangerous' %>
+  <%= link_to '🔝', :root %>
+  <%= link_to '🔙', @namespace %>
+  <%= link_to '🔙', namespace_page_path(@namespace, @page) %>
+  <br>
+  <%= link_to '❌', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'is-dangerous' %>
 </div>
 
 <%= render 'form' %>

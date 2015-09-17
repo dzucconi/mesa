@@ -4,18 +4,18 @@
   position: absolute
   top: $unit
   right: $unit
-  @include sans-serif-font()
+  font-size: 0
   z-index: 1
+  text-align: right
 
   > a
     display: inline-block
     color: black
+    font-size: 20px
+    line-height: 1.5
     padding: ($unit / 2) $unit
     &:hover
       color: rgba(black, 0.5)
-
-  > span
-    color: rgba(black, 0.5)
 
 .item > a
   display: block
