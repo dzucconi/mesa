@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   # GET /
   def index
     @pages = @namespace.pages
-    render template: 'namespaces/show'
   end
 
   # GET /:namespace_id/:id

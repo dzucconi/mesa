@@ -3,7 +3,7 @@ class NamespacesController < ApplicationController
 
   # GET /
   def index
-    @namespaces = Namespace.all
+    @namespaces = Namespace.order(updated_at: :desc).page(params[:page]).per(params[:per])
   end
 
   # GET /:id/edit

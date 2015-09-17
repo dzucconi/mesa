@@ -1,0 +1,23 @@
+<% content_for(:title) { @namespace.name } %>
+
+<nav class='actions'>
+  <%= link_to 'A', :root %>
+  <span>/</span>
+  <%= link_to 'Δ', edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
+  <span>|</span>
+  <%= link_to '+', new_namespace_page_path(@namespace) %>
+</nav>
+
+<%= div_for @pages, class: 'item' do |page| %>
+  <%= link_to namespace_page_path(@namespace, page) do %>
+
+    <span><%= page %></span>
+
+    <%= time_tag page.updated_at, class: 'item-updated-at' do %>
+      <% if page.updated_at.between?(3.days.ago, Time.now) %>
+        Updated <%= time_ago_in_words page.updated_at %> ago
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>
