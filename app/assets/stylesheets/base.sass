@@ -4,7 +4,6 @@
 *
   +selection(yellow, black)
 
-
 html
   +box-sizing(border-box)
 
@@ -66,21 +65,25 @@ em
 strong
   font-weight: bold
 
+code
+  background-color: lighten(black, 87.5%)
 pre
   padding: ($unit / 2)
   border: 2px solid black
+  code
+    background-color: transparent
 pre, code
   +monospace-font()
   font-size: 14px
 
 blockquote
   padding: ($unit / 2)
-  border-left: 2px solid rgba(black, 0.5)
+  border-left: 2px solid lighten(black, 50%)
   font-style: italic
 
 hr
   height: 1px
-  background-color: rgba(black, 0.25)
+  background-color: lighten(black, 75%)
   margin: ($unit * 2) 0
   border: none
 
