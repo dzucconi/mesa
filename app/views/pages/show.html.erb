@@ -1,11 +1,14 @@
 <% content_for(:title) { "#{@namespace} / #{@page}" } %>
 
-<nav class='actions'>
-  <%= link_to '🔝', :root %>
-  <%= link_to '🔙', @namespace %>
-  <br>
-  <%= link_to '🔷', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
-</nav>
+<%= content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= content_tag :span, @page %>
+<% end %>
+
+<%= content_for :actions do %>
+  <%= link_to 'Edit', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
+<% end %>
 
 <div class='page'>
   <%= @page.to_html.html_safe %>

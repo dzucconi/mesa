@@ -1,24 +1,22 @@
 <% content_for(:title) { @namespace.name } %>
 
-<nav class='actions'>
-  <%= link_to '🔝', :root %>
-  <%= link_to '🔙', :root %>
-  <br>
-  <%= link_to '🔷', edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
-  <br>
-  <%= link_to '➕', new_namespace_page_path(@namespace) %>
-</nav>
+<% content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= content_tag :span, @namespace %>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to "Edit #{@namespace}", edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
+  <%= link_to 'Add page', new_namespace_page_path(@namespace) %>
+<% end %>
 
 <%= div_for @pages, class: 'item' do |page| %>
   <%= link_to namespace_page_path(@namespace, page) do %>
-
     <span><%= page %></span>
-
     <%= time_tag page.updated_at, class: 'item-updated-at' do %>
       <% if page.updated_at.between?(3.days.ago, Time.now) %>
         Updated <%= time_ago_in_words page.updated_at %> ago
       <% end %>
     <% end %>
-
   <% end %>
 <% end %>

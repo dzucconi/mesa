@@ -1,11 +1,14 @@
 <% content_for(:title) { "Editing #{@namespace} / #{@page}" } %>
 
-<div class='actions'>
-  <%= link_to '🔝', :root %>
-  <%= link_to '🔙', @namespace %>
-  <%= link_to '🔙', namespace_page_path(@namespace, @page) %>
-  <br>
-  <%= link_to '❌', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'is-dangerous' %>
-</div>
+<% content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= link_to @page, namespace_page_path(@namespace, @page) %>
+  <%= content_tag :span, "Editing #{@page}" %>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to 'Delete', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'is-dangerous' %>
+<% end %>
 
 <%= render 'form' %>
