@@ -1,21 +1,52 @@
 @import './common'
 
-.actions
+.header
   position: absolute
-  top: $unit
-  right: $unit
-  font-size: 0
-  z-index: 1
-  text-align: right
+  display: flex
+  align-items: center
+  top: 0
+  right: 0
+  left: 0
+  height: $header-height
+  border-bottom: 1px solid lighten(black, 75%)
 
-  > a
+.breadcrumb,
+.actions
+  white-space: nowrap
+  > a,
+  > span
+    position: relative
     display: inline-block
+    padding: ($header-height / 2) $unit
+    line-height: 0
+    &:before
+      display: block
+      content: ''
+      position: absolute
+      top: 37.5%
+      bottom: 37.5%
+      right: 0
+      width: 1px
+      background-color: lighten(black, 75%)
+      +transform(rotate(22.5deg))
+    &:last-child:before
+      display: none
+  > a
     color: black
-    font-size: 20px
-    line-height: 1.5
-    padding: ($unit / 2) $unit
     &:hover
-      color: rgba(black, 0.5)
+      color: blue
+  > span
+    color: lighten(black, 50%)
+
+.actions
+  text-align: right
+  border-left: 1px solid lighten(black, 75%)
+  > a
+    &:before
+      +transform(rotate(0deg))
+
+.content
+  margin: ($header-height + $unit) 0
 
 .item > a
   display: block

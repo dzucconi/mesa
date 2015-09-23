@@ -14,11 +14,12 @@ select
   +appearance(none)
   display: block
   padding: ($unit / 4) ($unit / 2)
-  border: 2px solid black
+  border-bottom: 1px solid lighten(black, 75%)
   +border-radius(0)
+  background-color: white
   &:focus
     outline: none
-    background-color: $lighter-blue-color
+    background-color: lighten(black, 95%)
 
 input[type='text'],
 textarea
@@ -31,7 +32,7 @@ textarea
   background-color: white
   &:focus
     outline: none
-    background-color: $lighter-blue-color
+    background-color: lighten(black, 95%)
 
 .button,
 button,
@@ -52,8 +53,8 @@ input[type='button']
   background-color: transparent
   text-transform: uppercase
   &, &:visited
-    color: rgba(black, 0.75)
-    border-color: rgba(black, 0.75)
+    color: lighten(black, 25%)
+    border-color: lighten(black, 25%)
   &:hover
     color: black
     border-color: black
@@ -75,7 +76,7 @@ input[type='button']
   $button-height: ($base-font-size + $unit + 1 + 4)
 
   position: absolute
-  top: $unit
+  top: ($header-height + $unit)
   right: $unit
   bottom: $unit
   left: $unit

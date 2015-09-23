@@ -6,6 +6,7 @@
 $unit: 20px
 $base-font-size: 16px
 $base-line-height: 1.6
+$header-height: ($unit * 3)
 
 // Colors
 $light-blue-color: #c7cfde
@@ -13,7 +14,7 @@ $lighter-blue-color: #f5f7fb
 
 // Mixins
 =serif-font()
-  font-family: 'Times New Roman', times, serif
+  font-family: 'Crimson Text', 'Times New Roman', times, serif
   +font-smoothing(subpixel-antialiased)
 
 =sans-serif-font()
@@ -31,3 +32,8 @@ $lighter-blue-color: #f5f7fb
   @else
     -webkit-font-smoothing: subpixel-antialiased
     -moz-osx-font-smoothing: auto
+
+=ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis

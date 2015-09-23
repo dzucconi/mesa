@@ -1,3 +1,9 @@
 <% content_for(:title) { "Add a page to #{@namespace}" } %>
 
+<% content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= content_tag :span, 'New Page'%>
+<% end %>
+
 <%= render 'form' %>

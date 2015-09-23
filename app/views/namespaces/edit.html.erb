@@ -1,3 +1,9 @@
 <% content_for(:title) { "Editing #{@namespace}" } %>
 
+<% content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= content_tag :span, 'Editing Namespace'%>
+<% end %>
+
 <%= render 'form' %>

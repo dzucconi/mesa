@@ -1,17 +1,28 @@
 <!doctype html>
 <html>
   <head>
-    <title><%= yield(:title) || 'Mesa' %></title>
+    <title><%= yield :title || 'Mesa' %></title>
 
     <meta name='robots' content='noindex'>
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
 
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700', media: 'all' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic|Source+Code+Pro:400,700', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
 
   <body data-view="<%= view %>">
-    <%= yield %>
+    <header class='header'>
+      <nav class='breadcrumb'>
+        <%= yield :breadcrumb %>
+      </nav>
+      <nav class='actions'>
+        <%= yield :actions %>
+      </nav>
+    </header>
+
+    <section class='content'>
+      <%= yield %>
+    </section>
   </body>
 </html>
