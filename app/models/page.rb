@@ -15,6 +15,8 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
 
+  has_paper_trail only: [:content]
+
   validates :namespace_id, presence: true
   validates :title, presence: true
   validates :slug, presence: true
