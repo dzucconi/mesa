@@ -8,6 +8,7 @@
 
 <%= content_for :actions do %>
   <%= link_to 'Edit', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
+  <%= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
 <% end %>
 
 <div class='page'>

@@ -24,6 +24,7 @@ class UploadsController < ApplicationController
 
   def find_namespaced_page
     @namespace = Namespace.find_by_slug!(params[:namespace_id])
+    authenticate! if @namespace.locked?
     @page = @namespace.pages.includes(:uploads).find_by_slug!(params[:page_id])
   rescue
     redirect_to new_namespace_page_path(params[:namespace_id], id: params[:page_id])

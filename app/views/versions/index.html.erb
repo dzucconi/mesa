@@ -1,0 +1,20 @@
+<% content_for(:title) { "Versions of #{@page.title}" } %>
+
+<%= content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= content_tag :span, @page %>
+<% end %>
+
+<%= content_for :actions do %>
+  <%= link_to 'Show', namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
+  <%= link_to 'Edit', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
+<% end %>
+
+<% Differ.format = :html %>
+<% @versions.each do |version| %>
+  <div class='page-version'>
+    <h1><%= time_ago_in_words version.created_at %> ago</h1>
+    <%= Differ.diff(*version.changeset[:content].reverse).to_s.html_safe %>
+  </div>
+<% end %>

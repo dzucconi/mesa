@@ -15,6 +15,8 @@ gem 'active_model_serializers', '~> 0.9.3'
 gem 'browserify-rails'
 gem 'aws-sdk', '~> 2.0'
 gem 'aasm'
+gem 'paper_trail', '~> 4.0.0'
+gem 'differ'
 
 group :development do
   gem 'annotate'

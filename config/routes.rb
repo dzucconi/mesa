@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
 
       resources :uploads, only: [:index, :create]
+      resources :versions, only: [:index]
     end
   end
 end
