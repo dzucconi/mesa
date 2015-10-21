@@ -1,5 +1,11 @@
 @import './common'
 
+body[data-authenticated='false']
+  .header
+    display: none
+  .content
+    margin: $unit 0
+
 .header
   position: absolute
   display: flex

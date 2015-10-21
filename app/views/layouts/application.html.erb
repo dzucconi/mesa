@@ -11,7 +11,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body data-view="<%= view %>">
+  <body data-view="<%= view %>" data-authenticated="<%= session[:authenticated] || false %>">
     <header class='header'>
       <nav class='breadcrumb'>
         <%= yield :breadcrumb %>

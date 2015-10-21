@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
       @current_user = User.new(
         authenticated: username == ENV['USERNAME'] && password == ENV['PASSWORD']
       )
+
+      session[:authenticated] = @current_user.authenticated?
     end
   end
 end
