@@ -6,6 +6,16 @@ class VersionsController < ApplicationController
     @versions = @page.versions.unscope(:order).order(created_at: :desc)
   end
 
+  # POST /:namespace_id/:page_id/versions/:id
+  def restore
+    @page = @page.versions.find(params[:id]).reify
+    if @page.save
+      redirect_to namespace_page_path(@namespace, @page), notice: 'Restored'
+    else
+      redirect :back
+    end
+  end
+
   private
 
   def find_namespaced_page

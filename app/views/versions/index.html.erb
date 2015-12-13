@@ -14,7 +14,14 @@
 <% Differ.format = :html %>
 <% @versions.each do |version| %>
   <div class='page-version'>
-    <h1><%= time_ago_in_words version.created_at %> ago</h1>
+    <h1>
+      <%= time_ago_in_words version.created_at %> ago
+    </h1>
+
+    <div class='page-version-actions'>
+      <%= button_to 'Restore', restore_namespace_page_version_path(@namespace, @page, version), method: :post %>
+    </div>
+
     <%= Differ.diff(*version.changeset[:content].reverse).to_s.html_safe %>
   </div>
 <% end %>

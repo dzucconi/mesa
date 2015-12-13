@@ -27,7 +27,11 @@ Rails.application.routes.draw do
       end
 
       resources :uploads, only: [:index, :create]
-      resources :versions, only: [:index]
+      resources :versions, only: [:index] do
+        member do
+          post 'restore'
+        end
+      end
     end
   end
 end
