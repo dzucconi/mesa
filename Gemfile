@@ -17,6 +17,7 @@ gem 'aws-sdk', '~> 2.0'
 gem 'aasm'
 gem 'paper_trail', '~> 4.0.0'
 gem 'differ'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development do
   gem 'annotate'
