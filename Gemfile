@@ -1,4 +1,4 @@
-ruby '2.2.1'
+ruby '2.3.0'
 source 'https://rubygems.org'
 
 gem 'puma'
@@ -35,7 +35,6 @@ group :test do
   gem 'fabrication'
   gem 'webmock'
   gem 'dotenv-rails'
-  gem 'webmock'
 end
 
 group :production do
