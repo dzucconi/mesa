@@ -20,6 +20,7 @@ gem 'differ'
 gem 'rack-cors', require: 'rack/cors'
 
 group :development do
+  gem 'travis'
   gem 'annotate'
   gem 'rubocop'
   gem 'web-console', '~> 2.0'
