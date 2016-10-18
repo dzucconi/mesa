@@ -22,7 +22,7 @@ RSpec.describe Page, type: :model do
 
   describe '#to_s' do
     it 'returns the title' do
-      expect("#{page}").to eql 'Impression, Sunrise'
+      expect(page.to_s).to eql 'Impression, Sunrise'
     end
   end
 

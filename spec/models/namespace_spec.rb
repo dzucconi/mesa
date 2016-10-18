@@ -21,7 +21,7 @@ RSpec.describe Namespace, type: :model do
 
   describe '#to_s' do
     it 'returns the name' do
-      expect("#{namespace}").to eql 'Default'
+      expect(namespace.to_s).to eql 'Default'
     end
   end
 end

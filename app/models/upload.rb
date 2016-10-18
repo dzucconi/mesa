@@ -24,7 +24,8 @@ class Upload < ActiveRecord::Base
   end
 
   def signed
-    Aws::S3::Resource.new
+    Aws::S3::Resource
+      .new
       .bucket(bucket)
       .object(key)
       .presigned_url(:put, acl: 'public-read')
