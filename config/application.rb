@@ -12,6 +12,8 @@ Bundler.require(*Rails.groups)
 
 module Mesa
   class Application < Rails::Application
+    config.browserify_rails.commandline_options = '-t [ babelify --presets [ es2015 ] ]'
+
     config.action_view.field_error_proc = proc { |tag|
       "<span class='is-with-error'>#{tag}</span>".html_safe
     }
