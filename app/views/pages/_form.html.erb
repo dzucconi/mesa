@@ -1,15 +1,23 @@
 <%= form_for [@namespace, @page], html: {
-  class: 'editor js-form', data: { upload: @page.persisted? ? namespace_page_uploads_path(@namespace, @page) : '' }
+  class: 'form', data: { upload: @page.persisted? ? namespace_page_uploads_path(@namespace, @page) : '' }
 } do |f| %>
   <%= render 'common/errors', resource: @page %>
 
-  <%= f.hidden_field :slug %>
+  <div class='field'>
+    <%= f.label :slug, 'ID' %>
+    <%= f.text_field :slug, required: true %>
+  </div>
 
-  <%= f.text_field :title, placeholder: 'Title', autofocus: !@page.persisted? %>
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: 'Title', autofocus: true %>
+  </div>
 
-  <% if @page.persisted? %>
-    <%= f.text_area :content, placeholder: 'Page Content', rows: 20, autofocus: @page.persisted?, class: 'js-editor' %>
-  <% end %>
+  <div class='submit'>
+    <% if @page.persisted? %>
+      <%= link_to 'Delete', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-dangerous' %>
+    <% end %>
 
-  <%= f.submit 'Save', class: 'is-fixed' %>
+    <%= f.submit 'Save' %>
+  </div>
 <% end %>

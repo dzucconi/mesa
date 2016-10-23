@@ -1,11 +1,7 @@
 module Api
   module V1
     class PageSerializer < BaseSerializer
-      attributes :id, :slug, :title, :content, :html, :created_at, :updated_at, :_links
-
-      def html
-        object.to_html
-      end
+      attributes :id, :slug, :title, :delta, :content, :html, :created_at, :updated_at, :_links
 
       def _links
         {

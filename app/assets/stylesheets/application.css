@@ -6,5 +6,6 @@
  *= require errors
  *= require namespaces
  *= require pages
+ *= require editor
  *= require mobile
  */

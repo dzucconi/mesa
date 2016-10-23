@@ -1,7 +1,7 @@
-var size = 600;
+var size = 900;
 var endpoint = 'http://pale.auspic.es/resize';
 
-module.exports = function(url, width, height) {
+module.exports = ({ url, width, height }) => {
   return [
     endpoint,
     (width || size),

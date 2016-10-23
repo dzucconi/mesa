@@ -7,10 +7,20 @@
 <% end %>
 
 <%= content_for :actions do %>
-  <%= link_to 'Edit', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
-  <%= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
+  <%= link_to 'Settings', edit_namespace_page_path(@namespace, @page) %>
+  <%#= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
+  <%= link_to 'Uploads', namespace_page_uploads_path(@namespace, @page), class: 'js-page-uploads' %>
+  <%= content_tag :span, 'Saved', class: 'js-page-status' %>
 <% end %>
 
-<div class='page'>
-  <%= @page.to_html.html_safe %>
+<script type='text/javascript'>
+  window.BOOTSTRAP.editor = {
+    delta: <%= @page.delta.to_json.html_safe %>
+  };
+</script>
+
+<div
+  class='page js-page-editor'
+  data-url='<%= url_for [@namespace, @page] %>'>
+  <%= @page.html.try(:html_safe) unless @page.delta.present? %>
 </div>

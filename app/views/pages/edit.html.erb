@@ -4,12 +4,11 @@
   <%= link_to 'Root', :root %>
   <%= link_to @namespace, @namespace %>
   <%= link_to @page, namespace_page_path(@namespace, @page) %>
-  <%= content_tag :span, "Editing #{@page}" %>
+  <%= content_tag :span, 'Settings' %>
 <% end %>
 
 <% content_for :actions do %>
-  <%= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
-  <%= link_to 'Delete', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'is-dangerous' %>
+  <%#= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
 <% end %>
 
 <%= render 'form' %>

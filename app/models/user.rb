@@ -9,4 +9,8 @@ class User
   def authenticated?
     @authenticated
   end
+
+  def to_json(_options = {})
+    { authenticated: authenticated? }.to_json
+  end
 end

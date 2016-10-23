@@ -44,9 +44,9 @@ RSpec.describe PagesController, type: :controller do
       expect(assigns(:page).title).to eql 'Nearly There'
     end
 
-    it 'redirects to the edit action if the Page already exists' do
+    it 'redirects to the show action if the Page already exists' do
       get :new, namespace_id: namespace.slug, id: page.slug
-      expect(response).to redirect_to action: :edit, namespace_id: namespace.slug, id: page.slug
+      expect(response).to redirect_to action: :show, namespace_id: namespace.slug, id: page.slug
     end
   end
 
@@ -79,9 +79,9 @@ RSpec.describe PagesController, type: :controller do
       expect(assigns(:page)).to be_persisted
     end
 
-    it 'redirects to the edit Page' do
+    it 'redirects to the show Page' do
       post :create, namespace_id: namespace.slug, page: valid_attributes
-      expect(response).to redirect_to action: :edit, namespace_id: namespace.slug, id: Page.last.slug
+      expect(response).to redirect_to action: :show, namespace_id: namespace.slug, id: Page.last.slug
     end
   end
 

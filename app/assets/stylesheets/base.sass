@@ -7,6 +7,10 @@
 html
   +box-sizing(border-box)
 
+html,
+body
+  height: 100%
+
 *,
 *:before,
 *:after
@@ -15,7 +19,6 @@ html
 body
   background-color: white
   color: black
-  margin: $unit
   +serif-font()
   font-size: $base-font-size
   line-height: $base-line-height

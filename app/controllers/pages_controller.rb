@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   # GET /:namespace_id/new
   def new
     @page = @namespace.pages.find_by_slug!(params[:id])
-    redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Already exists'
+    redirect_to namespace_page_path(@namespace, @page), notice: 'Already exists'
   rescue ActiveRecord::RecordNotFound
     @page = @namespace.pages.new slug: params[:id], title: params[:id].try(:titleize)
   end
@@ -30,7 +30,14 @@ class PagesController < ApplicationController
     @page = @namespace.pages.new(page_params)
 
     if @page.save
-      redirect_to edit_namespace_page_path(@namespace, @page), notice: 'Created'
+      if request.xhr?
+        render json: {
+          url: namespace_page_path(@namespace, @page),
+          notice: 'Created'
+        }
+      else
+        redirect_to namespace_page_path(@namespace, @page), notice: 'Created'
+      end
     else
       render :new
     end
@@ -67,7 +74,7 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:slug, :title, :content)
+    params.require(:page).permit(:slug, :title, :delta, :html)
   end
 
   def find_namespace
@@ -78,7 +85,7 @@ class PagesController < ApplicationController
   end
 
   def find_with_redirect
-    @page = @namespace.pages.find_by_slug!(params[:id])
+    @page = @namespace.pages.includes(:uploads).find_by_slug!(params[:id])
     yield if block_given?
   rescue ActiveRecord::RecordNotFound
     redirect_to new_namespace_page_path(@namespace, id: params[:id])

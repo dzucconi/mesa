@@ -8,13 +8,15 @@
   <%= link_to 'Create Namespace', new_namespace_path %>
 <% end %>
 
-<%= div_for @namespaces, class: 'item' do |namespace| %>
-  <%= link_to namespace, class: "is-#{namespace.state}" do %>
-    <span><%= namespace %></span>
-    <%= time_tag namespace.updated_at, class: 'item-updated-at' do %>
-      <% if namespace.updated_at.between?(3.days.ago, Time.now) %>
-        Updated <%= time_ago_in_words namespace.updated_at %> ago
+<div class='namespaces'>
+  <%= div_for @namespaces, class: 'item' do |namespace| %>
+    <%= link_to namespace, class: "is-#{namespace.state}" do %>
+      <span><%= namespace %></span>
+      <%= time_tag namespace.updated_at, class: 'item-updated-at' do %>
+        <% if namespace.updated_at.between?(3.days.ago, Time.now) %>
+          Updated <%= time_ago_in_words namespace.updated_at %> ago
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

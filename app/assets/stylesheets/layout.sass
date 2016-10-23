@@ -4,7 +4,7 @@ body[data-authenticated='false']
   .header
     display: none
   .content
-    margin: $unit 0
+    margin: 0
 
 .header
   position: absolute
@@ -14,7 +14,7 @@ body[data-authenticated='false']
   right: 0
   left: 0
   height: $header-height
-  border-bottom: 1px solid lighten(black, 75%)
+  border-bottom: 1px solid $border-color
 
 .breadcrumb,
 .actions
@@ -33,7 +33,7 @@ body[data-authenticated='false']
       bottom: 37.5%
       right: 0
       width: 1px
-      background-color: lighten(black, 75%)
+      background-color: $border-color
       +transform(rotate(22.5deg))
     &:last-child:before
       display: none
@@ -46,28 +46,44 @@ body[data-authenticated='false']
 
 .actions
   text-align: right
-  border-left: 1px solid lighten(black, 75%)
+  border-left: 1px solid $border-color
   > a
     &:before
       +transform(rotate(0deg))
 
+.namespaces,
+.pages,
+.uploads
+  padding: $unit
+
+.inline
+  height: 25%
+
 .content
-  margin: ($header-height + $unit) 0
+  margin: $header-height 0
+  height: 100%
 
 .item > a
   display: block
+
+  > span
+    > strong
+      +sans-serif-font()
+      font-size: 14px
+
   &:hover
     > span
       text-decoration: underline
     > time
       color: black
+
   &.is-locked
     color: red
 
 .item-updated-at
   margin-left: ($unit / 4)
-  +sans-serif-font()
-  color: lighten(black, 75%)
-  line-height: 1
-  font-size: 12px
-  font-weight: bold
+  +small-type()
+  color: $border-color
+
+  &:first-child
+    margin-left: 0
