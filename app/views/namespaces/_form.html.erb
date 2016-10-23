@@ -1,9 +1,17 @@
-<%= form_for(@namespace) do |f| %>
+<%= form_for @namespace, html: { class: 'form' } do |f| %>
   <%= render 'common/errors', resource: @namespace %>
 
-  <%= f.text_field :name, placeholder: 'Name', value: @namespace.name || params[:name], autofocus: true %>
+  <div class='field'>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Name', value: @namespace.name || params[:name], autofocus: true, required: true %>
+  </div>
 
-  <%= f.select :state, [['Published', :published], ['Locked', :locked]] %>
+  <div class='field'>
+    <%= f.label :state, 'Privacy' %>
+    <%= f.select :state, [['Published', :published], ['Locked', :locked]] %>
+  </div>
 
-  <%= f.submit 'Save', class: 'is-fixed' %>
+  <div class='submit'>
+    <%= f.submit 'Save' %>
+  </div>
 <% end %>

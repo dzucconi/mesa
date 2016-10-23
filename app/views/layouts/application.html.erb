@@ -6,12 +6,32 @@
     <meta name='robots' content='noindex'>
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
 
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic|Source+Code+Pro:400,700', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <link href='https://cdn.quilljs.com/1.1.1/quill.snow.css' rel='stylesheet'>
+
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700', media: 'all' %>
+
     <%= csrf_meta_tags %>
+
+    <script type='text/javascript'>
+      window.BOOTSTRAP = {
+        authenticated: <%= logged_in? %>
+      };
+
+      <%= yield :bootstrap %>
+    </script>
+
+    <%= javascript_include_tag 'application' %>
+
+    <script src='https://cdn.quilljs.com/1.1.1/quill.js'></script>
   </head>
 
-  <body data-view="<%= view %>" data-authenticated="<%= session[:authenticated] || false %>">
+  <body
+    data-view="<%= view %>"
+    data-authenticated="<%= session[:authenticated] || false %>">
+    <div class='notifications js-notifications'>
+      <!--  -->
+    </div>
+
     <header class='header'>
       <nav class='breadcrumb'>
         <%= yield :breadcrumb %>

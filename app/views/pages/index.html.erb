@@ -6,17 +6,38 @@
 <% end %>
 
 <% content_for :actions do %>
-  <%= link_to "Edit #{@namespace}", edit_namespace_path(@namespace), class: 'js-namespace-edit' %>
-  <%= link_to 'Add page', new_namespace_page_path(@namespace) %>
+  <%= link_to 'Settings', edit_namespace_path(@namespace) %>
 <% end %>
 
-<%= div_for @pages, class: 'item' do |page| %>
-  <%= link_to namespace_page_path(@namespace, page) do %>
-    <span><%= page %></span>
-    <%= time_tag page.updated_at, class: 'item-updated-at' do %>
-      <% if page.updated_at.between?(3.days.ago, Time.now) %>
-        Updated <%= time_ago_in_words page.updated_at %> ago
+<% if logged_in? %>
+  <div
+    class='inline js-page-editor'
+    data-url='<%= url_for [@namespace, Page.new] %>'
+    data-autosave='false'
+    data-create='true'
+  >
+  </div>
+<% end %>
+
+<div class='pages'>
+  <%= div_for @pages, class: 'item' do |page| %>
+    <%= link_to namespace_page_path(@namespace, page) do %>
+      <% if page.title.present? || page.preview.present? %>
+        <span>
+          <% if page.title.present? %>
+            <strong>
+              <%= page.title %>
+            </strong>
+          <% end %>
+          <%= page.preview %>
+        </span>
+      <% end %>
+
+      <%= time_tag page.updated_at, class: 'item-updated-at' do %>
+        <% if page.updated_at.between?(3.days.ago, Time.now) %>
+          Updated <%= time_ago_in_words page.updated_at %> ago
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

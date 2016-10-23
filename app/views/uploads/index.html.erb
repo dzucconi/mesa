@@ -1,5 +1,14 @@
-<% content_for(:title) { "Uploads for #{@page.title}" } %>
+<% content_for(:title) { "#{@namespace} / #{@page} / Uploads" } %>
 
-<%= div_for @uploads do |upload| %>
-  <%= link_to upload.key, upload.qualified %>
+<%= content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+  <%= link_to @namespace, @namespace %>
+  <%= link_to @page, [@namespace, @page] %>
+  <%= content_tag :span, 'Uploads' %>
 <% end %>
+
+<div class='uploads'>
+  <%= div_for @uploads do |upload| %>
+    <%= link_to upload.key, upload.qualified %>
+  <% end %>
+</div>

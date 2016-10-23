@@ -1,38 +1,35 @@
 @import './common'
 
+.form
+  padding: $unit
+  margin-top: -$unit // Offset for hidden inputs
+
+.field,
+.submit
+  +block-margins($unit)
+
+.submit
+  width: 50%
+  padding-top: $unit
+  border-top: 1px solid $background-color
+
 input[type='text'],
 textarea,
-select,
-label
-  +monospace-font()
+select
+  +sans-serif-font()
   font-size: $base-font-size
 
 label
-  text-decoration: underline
-
-select
-  +appearance(none)
   display: block
-  padding: ($unit / 4) ($unit / 2)
-  border-bottom: 1px solid lighten(black, 75%)
-  +border-radius(0)
-  background-color: white
-  &:focus
-    outline: none
-    background-color: lighten(black, 95%)
+  +small-type()
+  color: lighten(black, 50%)
+  margin-bottom: ($unit / 4)
 
 input[type='text'],
 textarea
-  +appearance(none)
   display: block
   width: 100%
-  margin: $unit 0
-  padding: 0
-  border: none
-  background-color: white
-  &:focus
-    outline: none
-    background-color: lighten(black, 95%)
+  padding: ($unit / 4) ($unit / 2)
 
 .button,
 button,
@@ -46,44 +43,28 @@ input[type='button']
   text-align: center
   text-decoration: none
   cursor: pointer
-  border: 2px solid transparent
+  border: none
   font-size: $base-font-size
   font-weight: bold
   line-height: 1
-  background-color: transparent
-  text-transform: uppercase
-  &, &:visited
+  background-color: $background-color
+  border-radius: 4px
+
+  &,
+  &:visited
     color: lighten(black, 25%)
-    border-color: lighten(black, 25%)
+
   &:hover
     color: black
-    border-color: black
-  &:focus
-    outline: none
-    color: blue
-    border-color: blue
+    background-color: darken($background-color, 25%)
+
   &.is-dangerous
-    color: red
-    border-color: red
-  &.is-fixed
-    display: block
-    position: fixed
-    bottom: $unit
-    left: $unit
-    width: calc(100% - #{$unit * 2})
+    background-color: red
+    color: white
 
-.editor
-  $button-height: ($base-font-size + $unit + 1 + 4)
-
-  position: absolute
-  top: ($header-height + $unit)
-  right: $unit
-  bottom: $unit
-  left: $unit
-  > input[type='text']
-    margin: 0
-  > textarea
-    position: absolute
-    top: $base-font-size + $unit
-    bottom: $button-height + $unit
-    margin: 0
+  & + .button,
+  & + button,
+  & + input[type='submit'],
+  & + input[type='reset'],
+  & + input[type='button']
+    +inline-margins($unit / 2)

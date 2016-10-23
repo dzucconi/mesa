@@ -9,6 +9,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  namespace_id :integer
+#  delta        :json
 #
 
 require 'rails_helper'
