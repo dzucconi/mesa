@@ -65,3 +65,6 @@ TrivialAccessors:
 
 AbcSize:
   Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
