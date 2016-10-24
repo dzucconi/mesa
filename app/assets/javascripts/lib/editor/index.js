@@ -70,7 +70,7 @@ module.exports = () => {
 
   // Save periodically
   if (OPTIONS.autosave) {
-    setInterval(__save__, 5000);
+    setInterval(__save__, 2500);
   }
 
   // Set up keybindings
