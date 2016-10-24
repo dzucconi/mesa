@@ -1,2 +1,20 @@
+.page-add
+  position: relative
+
 .ql-toolbar.ql-snow
-  border-top: none
+  position: absolute
+  border: none
+  width: 100%
+  overflow-x: hidden
+  white-space: nowrap
+  z-index: 1
+  text-align: center
+  opacity: 0.5
+  transition: opacity 0.125s
+
+  &:hover
+    opacity: 1
+
+.ql-container.ql-snow
+  padding-top: 50px
+  border: none

@@ -28,17 +28,17 @@
   <body
     data-view="<%= view %>"
     data-authenticated="<%= session[:authenticated] || false %>">
-    <div class='notifications js-notifications'>
-      <!--  -->
-    </div>
 
     <header class='header'>
-      <nav class='breadcrumb'>
-        <%= yield :breadcrumb %>
-      </nav>
-      <nav class='actions'>
-        <%= yield :actions %>
-      </nav>
+      <div class='header__contents'>
+        <nav class='breadcrumb'>
+          <%= yield :breadcrumb %>
+        </nav>
+
+        <nav class='actions'>
+          <%= yield :actions %>
+        </nav>
+      </div>
     </header>
 
     <section class='content'>

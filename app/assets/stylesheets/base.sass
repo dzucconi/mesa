@@ -38,18 +38,10 @@ p,
 ul,
 pre,
 blockquote
-  margin: $unit 0
-  &:first-child
-    margin-top: 0
-  &:last-child
-    margin-bottom: 0
+  +block-margins($unit)
 
 section
-  margin: ($unit * 2) 0
-  &:first-child
-    margin-top: 0
-  &:last-child
-    margin-bottom: 0
+  +block-margins($unit * 2)
 
 h1,
 h2,

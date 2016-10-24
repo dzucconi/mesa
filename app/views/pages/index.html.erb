@@ -10,34 +10,40 @@
 <% end %>
 
 <% if logged_in? %>
-  <div
-    class='inline js-page-editor'
-    data-url='<%= url_for [@namespace, Page.new] %>'
-    data-autosave='false'
-    data-create='true'
-  >
+  <div class='page-add'>
+    <div
+      class='page js-page-editor'
+      data-url='<%= url_for [@namespace, Page.new] %>'
+      data-autosave='false'
+      data-create='true'
+    >
+      <!-- Rendered client-side -->
+    </div>
   </div>
 <% end %>
 
 <div class='pages'>
-  <%= div_for @pages, class: 'item' do |page| %>
-    <%= link_to namespace_page_path(@namespace, page) do %>
-      <% if page.title.present? || page.preview.present? %>
-        <span>
-          <% if page.title.present? %>
-            <strong>
-              <%= page.title %>
-            </strong>
-          <% end %>
-          <%= page.preview %>
-        </span>
+  <% @pages.each do |page| %>
+    <%= link_to namespace_page_path(@namespace, page), class: 'item' do %>
+      <% if page.title.present? %>
+        <div class='item__title'>
+          <%= page.title %>
+        </div>
       <% end %>
 
-      <%= time_tag page.updated_at, class: 'item-updated-at' do %>
-        <% if page.updated_at.between?(3.days.ago, Time.now) %>
-          Updated <%= time_ago_in_words page.updated_at %> ago
-        <% end %>
+      <% if page.preview.present? %>
+        <div class='item__preview'>
+          <%= page.preview %>
+        </div>
       <% end %>
+
+      <div class='item__meta'>
+        <%= time_tag page.updated_at, class: 'item__updated-at' do %>
+          <% if page.updated_at.between?(3.days.ago, Time.now) %>
+            Updated <%= time_ago_in_words page.updated_at %> ago
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -7,14 +7,17 @@ body[data-authenticated='false']
     margin: 0
 
 .header
-  position: absolute
-  display: flex
-  align-items: center
-  top: 0
-  right: 0
-  left: 0
-  height: $header-height
   border-bottom: 1px solid $border-color
+
+  &__contents
+    max-width: $page-max-width
+    margin: 0 auto
+    display: flex
+    height: $header-height
+    align-items: center
+    +sans-serif-font()
+    font-size: $base-font-size - 4
+    font-weight: bold
 
 .breadcrumb,
 .actions
@@ -56,34 +59,45 @@ body[data-authenticated='false']
 .uploads
   padding: $unit
 
-.inline
-  height: 25%
-
 .content
-  margin: $header-height 0
+  position: relative
+  margin: $unit auto
   height: 100%
+  max-width: $page-max-width
 
-.item > a
+.page-add
+  height: $page-add-height
+
+.item
   display: block
-
-  > span
-    > strong
-      +sans-serif-font()
-      font-size: 14px
+  padding: $unit 0
+  border-bottom: 1px solid $border-color
 
   &:hover
-    > span
-      text-decoration: underline
-    > time
+    .item__title,
+    .item__preview,
+    .item__meta
       color: black
 
-  &.is-locked
-    color: red
+  &--locked
+    > .item__title
+      color: lighten(red, 25%)
 
-.item-updated-at
-  margin-left: ($unit / 4)
-  +small-type()
-  color: $border-color
+  &__title,
+  &__preview,
+  &__meta
+    transition: color 0.25s
 
-  &:first-child
-    margin-left: 0
+  &__title
+    +sans-serif-font()
+    font-weight: bold
+    color: black
+
+  &__preview
+    +sans-serif-font()
+    color: gray
+
+  &__meta
+    margin-top: ($unit / 4)
+    +small-type()
+    color: $border-color
