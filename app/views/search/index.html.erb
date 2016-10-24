@@ -1,0 +1,21 @@
+<% content_for(:title) { 'Search' } %>
+
+<% content_for :breadcrumb do %>
+  <%= link_to 'Root', :root %>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to 'Back', :back %>
+<% end %>
+
+<%= render 'form' %>
+
+<% if @pages %>
+  <div class='pages'>
+    <% @pages.each do |page| %>
+      <%= render 'pages/stub', namespace: page.namespace, page: page %>
+    <% end %>
+  </div>
+
+  <%= paginate @pages %>
+<% end %>

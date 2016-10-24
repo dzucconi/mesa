@@ -48,9 +48,14 @@ body[data-authenticated='false']
 .actions
   text-align: right
   border-left: 1px solid $gray-regular
-  > a
-    &:before
-      +transform(rotate(0deg))
+
+  > a:before
+    +transform(rotate(0deg))
+
+  > form
+    display: inline-block
+    padding: 0 $unit
+
 
 .namespaces,
 .pages,

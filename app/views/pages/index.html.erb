@@ -8,6 +8,7 @@
 <% content_for :actions do %>
   <%= link_to 'Settings', edit_namespace_path(@namespace) %>
   <%= link_to 'Random', random_namespace_pages_path(@namespace) %>
+  <%= render 'search/form' %>
 <% end %>
 
 <% if logged_in? %>
@@ -25,27 +26,7 @@
 
 <div class='pages'>
   <% @pages.each do |page| %>
-    <%= link_to namespace_page_path(@namespace, page), class: 'item' do %>
-      <% if page.title.present? %>
-        <div class='item__title'>
-          <%= page.title %>
-        </div>
-      <% end %>
-
-      <% if page.preview.present? %>
-        <div class='item__preview'>
-          <%= page.preview %>
-        </div>
-      <% end %>
-
-      <div class='item__meta'>
-        <%= time_tag page.updated_at, class: 'item__updated-at' do %>
-          <% if page.updated_at.between?(3.days.ago, Time.now) %>
-            Updated <%= time_ago_in_words page.updated_at %> ago
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'stub', namespace: @namespace, page: page %>
   <% end %>
 </div>
 

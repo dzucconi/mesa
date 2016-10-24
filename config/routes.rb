@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get 'new' => 'namespaces#new'
+  get 'search' => 'search#index'
 
   # Occupy remaining root namespace
   # (place route declarations above this)
