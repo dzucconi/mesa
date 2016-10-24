@@ -19,8 +19,10 @@
   };
 </script>
 
-<div
-  class='page js-page-editor'
-  data-url='<%= url_for [@namespace, @page] %>'>
-  <%= @page.html.try(:html_safe) unless @page.delta.present? %>
+<div class='page'>
+  <div
+    class='js-page-editor'
+    data-url='<%= url_for [@namespace, @page] %>'>
+    <%= @page.html.try(:html_safe) unless @page.delta.present? %>
+  </div>
 </div>
