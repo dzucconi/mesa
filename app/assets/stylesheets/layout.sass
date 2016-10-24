@@ -5,7 +5,7 @@ body[data-authenticated='false']
     display: none
 
 .header
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid $gray-regular
 
   &__contents
     max-width: $page-max-width
@@ -34,12 +34,12 @@ body[data-authenticated='false']
       bottom: 37.5%
       right: 0
       width: 1px
-      background-color: $border-color
+      background-color: $gray-regular
       +transform(rotate(22.5deg))
     &:last-child:before
       display: none
   > a
-    color: $black
+    color: $gray-bold
     &:hover
       color: blue
   > span
@@ -47,7 +47,7 @@ body[data-authenticated='false']
 
 .actions
   text-align: right
-  border-left: 1px solid $border-color
+  border-left: 1px solid $gray-regular
   > a
     &:before
       +transform(rotate(0deg))
@@ -69,13 +69,13 @@ body[data-authenticated='false']
 .item
   display: block
   padding: $unit 0
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid $gray-regular
 
   &:hover
     .item__title,
     .item__preview,
     .item__meta
-      color: $black
+      color: $gray-bold
 
   &--locked
     > .item__title
@@ -89,16 +89,18 @@ body[data-authenticated='false']
   &__title
     +sans-serif-font()
     font-weight: bold
-    color: $black
+    color: $gray-bold
 
   &__preview
     +sans-serif-font()
+    font-size: $medium-font-size
+    font-weight: bold
     color: gray
 
   &__meta
     margin-top: ($unit / 4)
     +small-type()
-    color: $border-color
+    color: $gray-regular
 
 .pagination
   +sans-serif-font()
@@ -124,7 +126,7 @@ body[data-authenticated='false']
       color: black
 
       &:hover
-        background-color: $background-color
+        background-color: $gray-light
         text-decoration: none
 
   & > .gap,
@@ -132,7 +134,7 @@ body[data-authenticated='false']
     color: lighten(black, 50%)
 
   & > .current
-    background-color: $background-color
+    background-color: $gray-light
 
   & > .first,
   & > .prev,
