@@ -1,21 +1,29 @@
-<%= link_to namespace_page_path(namespace, page), class: 'item' do %>
-  <% if page.title.present? %>
+<% if namespace.locked? && !logged_in? %>
+  <div class='item'>
     <div class='item__title'>
-      <%= page.title %>
+      Log in to view this page
     </div>
-  <% end %>
-
-  <% if page.preview.present? %>
-    <div class='item__preview'>
-      <%= page.preview %>
-    </div>
-  <% end %>
-
-  <div class='item__meta'>
-    <%= time_tag page.updated_at, class: 'item__updated-at' do %>
-      <% if page.updated_at.between?(3.days.ago, Time.now) %>
-        Updated <%= time_ago_in_words page.updated_at %> ago
-      <% end %>
-    <% end %>
   </div>
+<% else %>
+  <%= link_to namespace_page_path(namespace, page), class: 'item' do %>
+    <% if page.title.present? %>
+      <div class='item__title'>
+        <%= page.title %>
+      </div>
+    <% end %>
+
+    <% if page.preview.present? %>
+      <div class='item__preview'>
+        <%= page.preview %>
+      </div>
+    <% end %>
+
+    <div class='item__meta'>
+      <%= time_tag page.updated_at, class: 'item__updated-at' do %>
+        <% if page.updated_at.between?(3.days.ago, Time.now) %>
+          Updated <%= time_ago_in_words page.updated_at %> ago
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
