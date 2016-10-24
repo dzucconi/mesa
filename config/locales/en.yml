@@ -1,2 +1,7 @@
 en:
-  hello: "Hello world"
+  views:
+    pagination:
+      first: 'A'
+      previous: 'Previous'
+      next: 'Next'
+      last: 'Ω'
