@@ -1,10 +1,16 @@
 class PagesController < ApplicationController
   before_filter :find_namespace
-  before_filter :authenticate!, except: [:index, :show, :source]
+  before_filter :authenticate!, except: [:index, :show, :source, :random]
 
-  # GET /
+  # GET /:namespace_id
   def index
     @pages = @namespace.pages.page(params[:page]).per(params[:per])
+  end
+
+  # GET /:namespace_id/random
+  def random
+    @page = @namespace.pages.unscope(:order).order('RANDOM()').limit(1).first
+    render :show
   end
 
   # GET /:namespace_id/:id

@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     end
 
     resources :pages, path: '' do
+      collection do
+        get 'random'
+      end
+
       member do
         get 'source'
       end
