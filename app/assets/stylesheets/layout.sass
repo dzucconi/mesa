@@ -41,7 +41,7 @@ body[data-authenticated='false']
     &:last-child:before
       display: none
   > a
-    color: black
+    color: $black
     &:hover
       color: blue
   > span
@@ -77,11 +77,11 @@ body[data-authenticated='false']
     .item__title,
     .item__preview,
     .item__meta
-      color: black
+      color: $black
 
   &--locked
     > .item__title
-      color: lighten(red, 25%)
+      //
 
   &__title,
   &__preview,
@@ -91,7 +91,7 @@ body[data-authenticated='false']
   &__title
     +sans-serif-font()
     font-weight: bold
-    color: black
+    color: $black
 
   &__preview
     +sans-serif-font()
@@ -101,3 +101,43 @@ body[data-authenticated='false']
     margin-top: ($unit / 4)
     +small-type()
     color: $border-color
+
+.pagination
+  +sans-serif-font()
+  display: table
+  width: 100%
+  font-size: 0
+
+  & > span
+    font-size: $base-font-size
+    display: table-cell
+    text-align: center
+    background-color: white
+
+  & > .page,
+  & > .first,
+  & > .prev,
+  & > .next,
+  & > .last
+    & > a
+      display: block
+      width: 100%
+      padding: ($unit * 2) 0
+      color: black
+
+      &:hover
+        background-color: $background-color
+        text-decoration: none
+
+  & > .gap,
+  & > .current
+    color: lighten(black, 50%)
+
+  & > .current
+    background-color: $background-color
+
+  & > .first,
+  & > .prev,
+  & > .next,
+  & > .last
+    width: 10%

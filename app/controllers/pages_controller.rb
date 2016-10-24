@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   # GET /
   def index
-    @pages = @namespace.pages
+    @pages = @namespace.pages.page(params[:page]).per(params[:per])
   end
 
   # GET /:namespace_id/:id
