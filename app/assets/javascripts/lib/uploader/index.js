@@ -8,7 +8,7 @@ const resize = require('../resize');
 module.exports = editor => {
   const { $el } = el('.js-page-editor');
 
-  if (!$el.length) return;
+  if (!$el) return;
 
   const insert = require('../editor/insert')(editor);
 

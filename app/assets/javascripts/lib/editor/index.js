@@ -22,7 +22,7 @@ const DEFAULTS = {
 module.exports = () => {
   const { $el, selector } = el('.js-page-editor');
 
-  if (!$el.length) return;
+  if (!$el) return;
 
   const OPTIONS = R.merge(DEFAULTS, $el.data());
 
