@@ -25,6 +25,7 @@
     "babelify": "^7.3.0",
     "browserify": "^11.0.1",
     "browserify-incremental": "^3.0.1",
+    "debounce": "^1.0.0",
     "jquery": "^3.1.1",
     "jquery-ujs": "^1.0.4",
     "ramda": "^0.17.1"

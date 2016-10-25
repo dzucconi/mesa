@@ -1,4 +1,5 @@
 const R = require('ramda');
+const debounce = require('debounce');
 const el = require('../el');
 const save = require('./save');
 const wait = require('../wait');
@@ -35,20 +36,6 @@ module.exports = () => {
 
   editor.focus();
 
-  if (OPTIONS.autosave) {
-    editor.on('text-change', () => {
-      STATE.is.edited = true;
-      $status.text('Pending');
-    });
-  }
-
-  // Ensure we don't leave before unsaved changes are persisted
-  $(window).on('beforeunload', () => {
-    if (STATE.is.edited) {
-      return 'There are unsaved changes. Are you sure you want to leave?';
-    }
-  });
-
   const __save__ = () => {
     if ((OPTIONS.autosave && !STATE.is.edited) || STATE.is.saving) return;
 
@@ -68,10 +55,22 @@ module.exports = () => {
       });
   };
 
-  // Save periodically
+  const autosave = debounce(__save__, 1000);
+
   if (OPTIONS.autosave) {
-    setInterval(__save__, 2500);
+    editor.on('text-change', () => {
+      STATE.is.edited = true;
+      $status.text('Pending');
+      autosave();
+    });
   }
+
+  // Ensure we don't leave before unsaved changes are persisted
+  $(window).on('beforeunload', () => {
+    if (STATE.is.edited) {
+      return 'There are unsaved changes. Are you sure you want to leave?';
+    }
+  });
 
   // Set up keybindings
   editor.keyboard.addBinding({
