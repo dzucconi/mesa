@@ -3,6 +3,8 @@
 body[data-authenticated='false']
   .header
     display: none
+  .content
+    margin: 0 auto
 
 .header
   &__contents
@@ -72,7 +74,8 @@ body[data-authenticated='false']
   position: relative
   margin: $unit auto
   height: 100%
-  max-width: $page-max-width
+  padding-left: calc((100% - #{$page-max-width}) / 2)
+  padding-right: calc((100% - #{$page-max-width}) / 2)
 
 .page-add
   height: $page-add-height

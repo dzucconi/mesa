@@ -2,22 +2,21 @@ module.exports = {
   authenticated: {
     false: {
       readOnly: true,
-      theme: 'snow',
+      theme: 'bubble',
       modules: {
         toolbar: false,
       }
     },
 
     true: {
-      theme: 'snow',
+      theme: 'bubble',
       modules: {
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],
           ['blockquote', 'code-block'],
           ['link'],
           [{ 'header': 1 }, { 'header': 2 }],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],
+          [{ 'list': 'bullet' }],
           [{ 'align': [] }],
           ['clean'],
         ],
