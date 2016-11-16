@@ -13,18 +13,19 @@ $page-max-width: 800px
 $page-add-height: 220px
 
 // Colors
+$blue-light: #b5d5fa
 $gray-bold: lighten(black, 25%)
 $gray-regular: lighten(black, 80%)
 $gray-light: lighten(black, 90%)
 
 // Mixins
 =serif-font()
-  font-family: serif
+  font-family: 'Times New Roman', times, serif
   +font-smoothing(subpixel-antialiased)
 
 =sans-serif-font()
-  font-family: sans-serif
-  +font-smoothing(antialiased)
+  font-family: 'Helvetica Neue', sans-serif
+  +font-smoothing(subpixel-antialiased)
 
 =monospace-font()
   font-family: monospace

@@ -5,8 +5,6 @@ body[data-authenticated='false']
     display: none
 
 .header
-  border-bottom: 1px solid $gray-regular
-
   &__contents
     max-width: $page-max-width
     margin: 0 auto
@@ -14,18 +12,19 @@ body[data-authenticated='false']
     height: $header-height
     align-items: center
     +sans-serif-font()
-    font-size: $base-font-size - 4
-    font-weight: bold
+    font-size: $medium-font-size
 
 .breadcrumb,
 .actions
   white-space: nowrap
+
   > a,
   > span
     position: relative
     display: inline-block
     padding: ($header-height / 2) $unit
     line-height: 0
+
     &:before
       display: block
       content: ''
@@ -34,20 +33,27 @@ body[data-authenticated='false']
       bottom: 37.5%
       right: 0
       width: 1px
-      background-color: $gray-regular
+      background-color: $gray-light
       +transform(rotate(22.5deg))
+
     &:last-child:before
       display: none
+
   > a
-    color: $gray-bold
+    color: black
     &:hover
-      color: blue
+      text-decoration: underline
+
   > span
-    color: lighten(black, 50%)
+    text-decoration: underline
+
+  &__status
+    color: $gray-regular
+    text-decoration: none !important
 
 .actions
   text-align: right
-  border-left: 1px solid $gray-regular
+  border-left: 1px dotted $gray-regular
 
   > a:before
     +transform(rotate(0deg))
@@ -93,13 +99,11 @@ body[data-authenticated='false']
 
   &__title
     +sans-serif-font()
-    font-weight: bold
-    color: $gray-bold
+    color: black
 
   &__preview
     +sans-serif-font()
     font-size: $medium-font-size
-    font-weight: bold
     color: gray
 
   &__meta

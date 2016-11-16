@@ -10,7 +10,7 @@
   <%= link_to 'Settings', edit_namespace_page_path(@namespace, @page) %>
   <%#= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
   <%= link_to 'Uploads', namespace_page_uploads_path(@namespace, @page), class: 'js-page-uploads' %>
-  <%= content_tag :span, 'Saved', class: 'js-page-status' %>
+  <%= content_tag :span, 'Saved', class: 'actions__status js-page-status' %>
 <% end %>
 
 <script type='text/javascript'>
