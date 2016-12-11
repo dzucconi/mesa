@@ -1,5 +1,5 @@
 var size = 900;
-var endpoint = 'http://pale.auspic.es/resize';
+var endpoint = window.BOOTSTRAP.env.PROXY_ENDPOINT;
 
 module.exports = ({ url, width, height }) => {
   return [

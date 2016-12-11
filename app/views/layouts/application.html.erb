@@ -16,7 +16,10 @@
 
     <script type='text/javascript'>
       window.BOOTSTRAP = {
-        authenticated: <%= logged_in? %>
+        authenticated: <%= logged_in? %>,
+        env: {
+          PROXY_ENDPOINT: '<%= ENV['PROXY_ENDPOINT'] %>',
+        },
       };
 
       <%= yield :bootstrap %>
