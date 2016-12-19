@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024192135) do
+ActiveRecord::Schema.define(version: 20161215110057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,12 @@ ActiveRecord::Schema.define(version: 20161024192135) do
     t.string   "slug"
     t.text     "title"
     t.text     "content"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "namespace_id"
     t.json     "delta"
     t.text     "html"
+    t.integer  "mode",         default: 0
   end
 
   add_index "pages", ["namespace_id"], name: "index_pages_on_namespace_id", using: :btree

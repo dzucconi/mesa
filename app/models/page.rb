@@ -10,11 +10,15 @@
 #  updated_at   :datetime         not null
 #  namespace_id :integer
 #  delta        :json
+#  html         :text
+#  mode         :integer          default(0)
 #
 
 class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
+
+  enum mode: [:wysiwyg, :html, :plain]
 
   has_paper_trail only: [:content, :delta]
 
