@@ -80,7 +80,14 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:slug, :title, :delta, :html)
+    params.require(:page).permit(
+      :slug,
+      :title,
+      :delta,
+      :html,
+      :content,
+      :mode
+    )
   end
 
   def find_namespace

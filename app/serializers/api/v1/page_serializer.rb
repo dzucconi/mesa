@@ -1,7 +1,7 @@
 module Api
   module V1
     class PageSerializer < BaseSerializer
-      attributes :id, :slug, :title, :delta, :content, :html, :created_at, :updated_at, :_links
+      attributes :id, :slug, :mode, :title, :delta, :content, :html, :created_at, :updated_at, :_links
 
       def _links
         {

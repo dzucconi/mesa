@@ -1,5 +1,9 @@
 <% content_for(:title) { "#{@namespace} / #{@page}" } %>
 
+<script type='text/javascript'>
+  window.BOOTSTRAP.page = <%= @page.to_json.html_safe %>;
+</script>
+
 <%= content_for :breadcrumb do %>
   <%= link_to 'Root', :root %>
   <%= link_to @namespace, @namespace %>
@@ -8,21 +12,20 @@
 
 <%= content_for :actions do %>
   <%= link_to 'Settings', edit_namespace_page_path(@namespace, @page) %>
-  <%#= link_to 'Versions', namespace_page_versions_path(@namespace, @page) %>
   <%= link_to 'Uploads', namespace_page_uploads_path(@namespace, @page), class: 'js-page-uploads' %>
   <%= content_tag :span, 'Saved', class: 'actions__status js-page-status' %>
 <% end %>
 
-<script type='text/javascript'>
-  window.BOOTSTRAP.editor = {
-    delta: <%= @page.delta.to_json.html_safe %>
-  };
-</script>
-
 <div class='page'>
-  <div
-    class='js-page-editor'
-    data-url='<%= url_for [@namespace, @page] %>'>
-    <%= @page.html.try(:html_safe) unless @page.delta.present? %>
-  </div>
+  <%= form_for [@namespace, @page] do |f| %>
+    <% if @page.wysiwyg? %>
+      <div
+        class='js-page-editor'
+        data-url='<%= url_for [@namespace, @page] %>'>
+        <%= @page.html.try(:html_safe) unless @page.delta.present? %>
+      </div>
+    <% else %>
+      <%= f.text_area :content, rows: 20, class: 'js-page-editor' %>
+    <% end %>
+  <% end %>
 </div>

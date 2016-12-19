@@ -10,6 +10,8 @@
 #  updated_at   :datetime         not null
 #  namespace_id :integer
 #  delta        :json
+#  html         :text
+#  mode         :integer          default(0)
 #
 
 require 'rails_helper'

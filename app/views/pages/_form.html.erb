@@ -13,6 +13,11 @@
     <%= f.text_field :title, placeholder: 'Title', autofocus: true %>
   </div>
 
+  <div class='field'>
+    <%= f.label :mode %>
+    <%= f.select :mode, Page.modes.keys.to_a %>
+  </div>
+
   <div class='submit'>
     <% if @page.persisted? %>
       <%= link_to 'Delete', [@namespace, @page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-dangerous' %>
