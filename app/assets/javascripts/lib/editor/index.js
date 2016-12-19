@@ -10,7 +10,7 @@ const STATE = {
 const MODES = {
   wysiwyg: require('./wysiwyg'),
   plain: require('./plain'),
-  html: require('./plain'),
+  html: require('./html'),
 };
 
 const DEFAULTS = {
