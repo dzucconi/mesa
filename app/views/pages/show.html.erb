@@ -18,14 +18,6 @@
 
 <div class='page'>
   <%= form_for [@namespace, @page] do |f| %>
-    <% if @page.wysiwyg? %>
-      <div
-        class='js-page-editor'
-        data-url='<%= url_for [@namespace, @page] %>'>
-        <%= @page.html.try(:html_safe) unless @page.delta.present? %>
-      </div>
-    <% else %>
-      <%= f.text_area :content, rows: 20, class: 'js-page-editor' %>
-    <% end %>
+    <%= render "pages/editors/#{@page.mode}", f: f, namespace: @namespace, page: @page %>
   <% end %>
 </div>

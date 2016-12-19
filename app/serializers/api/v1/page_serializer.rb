@@ -14,7 +14,7 @@ module Api
 
       def html
         case object.mode
-        when 'plain', 'html'
+        when 'plain'
           object.content
         else
           object.html

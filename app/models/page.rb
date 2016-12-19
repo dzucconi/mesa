@@ -42,12 +42,16 @@ class Page < ActiveRecord::Base
     Kramdown::Document.new(content || '').to_html
   end
 
-  def preview
-    output = delta && delta['ops']
+  def plain
+    delta && delta['ops']
       .map { |op| op['insert'].strip if op['insert'].is_a? String }
       .compact
       .join(' ')
       .strip
+  end
+
+  def preview
+    output = plain
       .tr("\n", ' ')
       .truncate(200)
 
