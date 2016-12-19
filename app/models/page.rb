@@ -51,7 +51,7 @@ class Page < ActiveRecord::Base
   end
 
   def preview
-    output = plain
+    output = plain && plain
       .tr("\n", ' ')
       .truncate(200)
 
