@@ -4,6 +4,11 @@
   padding: $unit
   margin-top: -$unit // Offset for hidden inputs
 
+  &--inline
+    display: inline
+    padding: 0
+    margin: 0
+
 .field,
 .submit
   +block-margins($unit)
@@ -68,6 +73,14 @@ input[type='button']
   & + input[type='reset'],
   & + input[type='button']
     +inline-margins($unit / 2)
+
+.button
+  &--clear
+    background-color: transparent
+    padding: 0
+
+    &:hover
+      background-color: transparent
 
 textarea
   border: none

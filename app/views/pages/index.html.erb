@@ -1,16 +1,22 @@
 <% content_for(:title) { @namespace.name } %>
 
+<% if @namespace.locked? %>
+  <div class='namespace-state'>
+    <%= material_icon.lock.md_18 %>
+  </div>
+<% end %>
+
 <% content_for :breadcrumb do %>
   <%= link_to 'Root', :root %>
   <%= content_tag :span, @namespace %>
 <% end %>
 
-<% content_for :actions do %>
+<% content_for :contextual do %>
   <%= link_to 'Settings', edit_namespace_path(@namespace) %>
   <%= render 'search/form' %>
 <% end %>
 
-<% content_for :directions do %>
+<% content_for :actions do %>
   <%= link_to material_icon.shuffle, random_namespace_pages_path(@namespace) %>
 <% end %>
 

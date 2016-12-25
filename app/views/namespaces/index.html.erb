@@ -4,7 +4,7 @@
   <%= content_tag :span, 'Root' %>
 <% end %>
 
-<% content_for :actions do %>
+<% content_for :contextual do %>
   <%= link_to 'Create Namespace', new_namespace_path %>
 <% end %>
 
@@ -13,9 +13,11 @@
     <%= link_to namespace, class: "item item--#{namespace.state}" do %>
       <div class='item__title'>
         <%= namespace %>
+      </div>
 
+      <div class='item__state'>
         <% if namespace.locked? %>
-          [<%= namespace.state %>]
+          <%= material_icon.lock.md_18 %>
         <% end %>
       </div>
 
