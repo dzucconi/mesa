@@ -31,6 +31,9 @@
   <body
     data-view="<%= view %>"
     data-authenticated="<%= session[:authenticated] || false %>">
+    <nav class='directions'>
+      <%= yield :directions %>
+    </nav>
 
     <header class='header'>
       <div class='header__contents'>

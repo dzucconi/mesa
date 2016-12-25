@@ -16,6 +16,12 @@
   <%= content_tag :span, 'Saved', class: 'actions__status js-page-status' %>
 <% end %>
 
+<% content_for :directions do %>
+  <%= link_to material_icon.keyboard_arrow_left, previous_namespace_page_path(@namespace, @page) %>
+  <%= link_to material_icon.keyboard_arrow_right, next_namespace_page_path(@namespace, @page) %>
+  <%= link_to material_icon.shuffle, random_namespace_pages_path(@namespace) %>
+<% end %>
+
 <div class='page'>
   <%= form_for [@namespace, @page] do |f| %>
     <%= render "pages/editors/#{@page.mode}", f: f, namespace: @namespace, page: @page %>

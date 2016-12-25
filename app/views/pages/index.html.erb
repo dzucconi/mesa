@@ -7,8 +7,11 @@
 
 <% content_for :actions do %>
   <%= link_to 'Settings', edit_namespace_path(@namespace) %>
-  <%= link_to 'Random', random_namespace_pages_path(@namespace) %>
   <%= render 'search/form' %>
+<% end %>
+
+<% content_for :directions do %>
+  <%= link_to material_icon.shuffle, random_namespace_pages_path(@namespace) %>
 <% end %>
 
 <% if logged_in? %>
