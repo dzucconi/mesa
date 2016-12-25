@@ -19,6 +19,7 @@ gem 'paper_trail', '~> 4.0.0'
 gem 'differ'
 gem 'rack-cors', require: 'rack/cors'
 gem 'textacular', '~> 3.0'
+gem 'material_icons'
 
 group :development do
   gem 'travis'
