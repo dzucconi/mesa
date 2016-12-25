@@ -10,16 +10,30 @@
   <%= content_tag :span, @page %>
 <% end %>
 
-<%= content_for :actions do %>
+<%= content_for :contextual do %>
   <%= link_to 'Settings', edit_namespace_page_path(@namespace, @page) %>
   <%= link_to 'Uploads', namespace_page_uploads_path(@namespace, @page), class: 'js-page-uploads' %>
   <%= content_tag :span, 'Saved', class: 'actions__status js-page-status' %>
 <% end %>
 
-<% content_for :directions do %>
+<% content_for :actions do %>
   <%= link_to material_icon.keyboard_arrow_left, previous_namespace_page_path(@namespace, @page) %>
   <%= link_to material_icon.keyboard_arrow_right, next_namespace_page_path(@namespace, @page) %>
   <%= link_to material_icon.shuffle, random_namespace_pages_path(@namespace) %>
+
+  <%= form_for [@namespace, @page], html: { class: 'utility--align-right' } do |f| %>
+    <% if @page.archived? %>
+      <%= f.hidden_field :status, value: :active %>
+      <%= button_tag class: 'button--clear' do %>
+        <%= material_icon.unarchive %>
+      <% end %>
+    <% else %>
+      <%= f.hidden_field :status, value: :archived %>
+      <%= button_tag class: 'button--clear' do %>
+        <%= material_icon.archive %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class='page'>

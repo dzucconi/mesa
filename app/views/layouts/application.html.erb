@@ -31,8 +31,8 @@
   <body
     data-view="<%= view %>"
     data-authenticated="<%= session[:authenticated] || false %>">
-    <nav class='directions'>
-      <%= yield :directions %>
+    <nav class='actions'>
+      <%= yield :actions %>
     </nav>
 
     <header class='header'>
@@ -41,8 +41,8 @@
           <%= yield :breadcrumb %>
         </nav>
 
-        <nav class='actions'>
-          <%= yield :actions %>
+        <nav class='contextual'>
+          <%= yield :contextual %>
         </nav>
       </div>
     </header>

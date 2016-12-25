@@ -17,7 +17,7 @@ body[data-authenticated='false']
     font-size: $medium-font-size
 
 .breadcrumb,
-.actions
+.contextual
   white-space: nowrap
 
   > a,
@@ -53,7 +53,7 @@ body[data-authenticated='false']
     color: $gray-regular
     text-decoration: none !important
 
-.actions
+.contextual
   text-align: right
   border-left: 1px dotted $gray-regular
 
@@ -64,14 +64,18 @@ body[data-authenticated='false']
     display: inline-block
     padding: 0 $unit
 
-.directions
+.actions
   position: absolute
   top: 0
   right: 0
   padding: $unit
 
-  > a
+  a,
+  button
     color: $gray-regular
+
+    &:hover
+      color: black
 
 .namespaces,
 .pages,
@@ -89,6 +93,7 @@ body[data-authenticated='false']
   height: $page-add-height
 
 .item
+  position: relative
   display: block
   padding: $unit 0
   border-bottom: 1px solid $gray-regular
@@ -116,6 +121,13 @@ body[data-authenticated='false']
     +sans-serif-font()
     font-size: $medium-font-size
     color: gray
+
+  &__state
+    position: absolute
+    right: 0
+    color: gray
+    top: 50%
+    +transform(translateY(-50%))
 
   &__meta
     margin-top: ($unit / 4)
@@ -161,3 +173,10 @@ body[data-authenticated='false']
   & > .next,
   & > .last
     width: 10%
+
+.namespace-state
+  position: fixed
+  bottom: 0
+  left: 0
+  padding: $unit
+  color: $gray-regular

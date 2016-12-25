@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   # GET /:namespace_id
   def index
-    @pages = @namespace.pages.page(params[:page]).per(params[:per])
+    @pages = @namespace.pages.active.page(params[:page]).per(params[:per])
   end
 
   # GET /:namespace_id/random
@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   # GET /:namespace_id/:id/previous
   def previous
     find_with_redirect
-    @previous = @namespace.pages.where('updated_at > ?', @page.updated_at).reverse.first
+    @previous = @namespace.pages.where('updated_at > ?', @page.updated_at).last
     redirect_to [@namespace, @previous]
   end
 
@@ -66,6 +66,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /:namespace_id/:id
   def update
     @page = @namespace.pages.find(params[:id])
+
     if @page.update(page_params)
       if request.xhr?
         render json: @page
@@ -100,7 +101,8 @@ class PagesController < ApplicationController
       :delta,
       :html,
       :content,
-      :mode
+      :mode,
+      :status
     )
   end
 

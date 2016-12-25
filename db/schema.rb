@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215110057) do
+ActiveRecord::Schema.define(version: 20161225193600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,16 +45,18 @@ ActiveRecord::Schema.define(version: 20161215110057) do
     t.string   "slug"
     t.text     "title"
     t.text     "content"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "namespace_id"
     t.json     "delta"
     t.text     "html"
     t.integer  "mode",         default: 0
+    t.string   "status",       default: "active"
   end
 
   add_index "pages", ["namespace_id"], name: "index_pages_on_namespace_id", using: :btree
   add_index "pages", ["slug", "namespace_id"], name: "index_pages_on_slug_and_namespace_id", unique: true, using: :btree
+  add_index "pages", ["status"], name: "index_pages_on_status", using: :btree
 
   create_table "uploads", force: :cascade do |t|
     t.string   "file_name"

@@ -6,7 +6,7 @@
   <%= content_tag :span, @page %>
 <% end %>
 
-<%= content_for :actions do %>
+<%= content_for :contextual do %>
   <%= link_to 'Show', namespace_page_path(@namespace, @page) %>
   <%= link_to 'Edit', edit_namespace_page_path(@namespace, @page), class: 'js-page-edit' %>
 <% end %>

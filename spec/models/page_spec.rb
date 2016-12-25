@@ -12,6 +12,7 @@
 #  delta        :json
 #  html         :text
 #  mode         :integer          default(0)
+#  status       :string
 #
 
 require 'rails_helper'
