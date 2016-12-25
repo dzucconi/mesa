@@ -12,9 +12,12 @@
 #  delta        :json
 #  html         :text
 #  mode         :integer          default(0)
+#  status       :string
 #
 
 class Page < ActiveRecord::Base
+  include AASM
+
   extend FriendlyId
   friendly_id :slug
 
@@ -29,6 +32,18 @@ class Page < ActiveRecord::Base
   has_many :uploads, dependent: :destroy
 
   before_validation :ensure_slug
+
+  aasm column: 'status' do
+    state :active, initial: true
+    state :archived
+
+    event :archive do
+      transitions from: [:active], to: :archived
+    end
+  end
+
+  scope :active, -> { where(status: :active) }
+  scope :archived, -> { where(status: :archived) }
 
   def ensure_slug
     self.slug = (title.try(:parameterize) || SecureRandom.hex(11)) if slug.blank?
