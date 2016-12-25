@@ -131,6 +131,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    material_icons (2.2.0)
+      railties (>= 3.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -290,6 +292,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   kaminari (~> 0.16.3)
   kramdown (~> 1.5.0)
+  material_icons
   paper_trail (~> 4.0.0)
   pg
   puma
