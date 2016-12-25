@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :find_namespace
-  before_filter :authenticate!, except: [:index, :show, :source, :random]
+  before_filter :authenticate!, except: [:index, :show, :source, :random, :next, :previous]
 
   # GET /:namespace_id
   def index
@@ -16,6 +16,20 @@ class PagesController < ApplicationController
   # GET /:namespace_id/:id
   def show
     find_with_redirect
+  end
+
+  # GET /:namespace_id/:id/next
+  def next
+    find_with_redirect
+    @next = @namespace.pages.where('updated_at < ?', @page.updated_at).first
+    redirect_to [@namespace, @next]
+  end
+
+  # GET /:namespace_id/:id/previous
+  def previous
+    find_with_redirect
+    @previous = @namespace.pages.where('updated_at > ?', @page.updated_at).first
+    redirect_to [@namespace, @previous]
   end
 
   # GET /:namespace_id/new

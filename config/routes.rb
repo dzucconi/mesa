@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
       member do
         get 'source'
+        get 'next'
+        get 'previous'
       end
 
       resources :uploads, only: [:index, :create]
