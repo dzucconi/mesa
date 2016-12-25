@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   # GET /:namespace_id/:id/previous
   def previous
     find_with_redirect
-    @previous = @namespace.pages.where('updated_at > ?', @page.updated_at).reverse.first
+    @previous = @namespace.pages.where('updated_at > ?', @page.updated_at).last
     redirect_to [@namespace, @previous]
   end
 
