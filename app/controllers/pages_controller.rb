@@ -4,7 +4,8 @@ class PagesController < ApplicationController
 
   # GET /:namespace_id
   def index
-    @pages = @namespace.pages.active.page(params[:page]).per(params[:per])
+    status = params[:status].to_sym if Page.aasm.states.map(&:to_s).include? params[:status]
+    @pages = @namespace.pages.send(status || :active).page(params[:page]).per(params[:per])
   end
 
   # GET /:namespace_id/random

@@ -12,6 +12,9 @@
 <% end %>
 
 <% content_for :contextual do %>
+  <% toggled_status(params[:status]).tap do |status| %>
+    <%= link_to "View #{status.titleize}", namespace_path(@namespace, status: status) %>
+  <% end %>
   <%= link_to 'Settings', edit_namespace_path(@namespace) %>
   <%= render 'search/form' %>
 <% end %>
