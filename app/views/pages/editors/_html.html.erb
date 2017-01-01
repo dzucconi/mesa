@@ -1,1 +1,8 @@
-<%= f.text_area :html, rows: 20, class: 'js-page-editor' %>
+<div class='page-html js-page-editor'>
+  <div class='page-html__editor'>
+    <%= f.text_area :html, rows: 20, class: 'js-page-editor__input' %>
+  </div>
+  <div class='page-html__preview'>
+    <iframe class='js-page-editor__preview' src='<%= rendered_namespace_page_path(namespace, page) %>'></iframe>
+  </div>
+</div>

@@ -1,22 +1,25 @@
-const R = require('ramda');
 const Autosave = require('./autosave');
 
 module.exports = ({ $el, STATE, DEFAULTS }) => {
-  const OPTIONS = R.merge(DEFAULTS, $el.data());
+  const OPTIONS = DEFAULTS;
+
+  const $input = $el.find('.js-page-editor__input');
+  const $preview = $el.find('.js-page-editor__preview');
 
   const autosaver = new Autosave({
     STATE,
     OPTIONS,
     data: () => ({
-      html: $el.val(),
+      html: $input.val(),
     }),
   });
 
   if (OPTIONS.autosave) {
-    $el.on('input', () => {
+    $input.on('input', () => {
       STATE.is.edited = true;
       autosaver.notify('Pending');
-      autosaver.debounced();
+      autosaver.debounced()
+        .then(() => $preview[0].contentWindow.location.reload());
     });
   }
 };

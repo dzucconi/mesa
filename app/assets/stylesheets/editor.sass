@@ -1,6 +1,7 @@
 .page-add
   position: relative
 
+// WYSIWYG
 .ql-toolbar.ql-snow
   position: absolute
   border: none
@@ -21,3 +22,19 @@
 body[data-authenticated='false']
   .ql-container.ql-snow
     padding-top: 0
+
+// HTML
+.page-html
+  position: absolute
+  left: 0
+  right: 0
+  display: flex
+
+  &__editor,
+  &__preview
+    width: 50%
+
+  &__preview
+    > iframe
+      width: 100%
+      height: 100%
