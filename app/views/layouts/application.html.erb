@@ -29,8 +29,8 @@
   </head>
 
   <body
-    data-view="<%= view %>"
-    data-authenticated="<%= session[:authenticated] || false %>">
+    data-view='<%= view %>'
+    data-authenticated='<%= logged_in? %>'>
     <nav class='actions'>
       <%= yield :actions %>
     </nav>
