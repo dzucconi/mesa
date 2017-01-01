@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       member do
+        get 'rendered'
         get 'source'
         get 'next'
         get 'previous'

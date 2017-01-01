@@ -1,0 +1,5 @@
+<% content_for(:title) { "#{@namespace} / #{@page}" } %>
+
+<div class='page page--rendered'>
+  <%= @page.html.html_safe %>
+</div>

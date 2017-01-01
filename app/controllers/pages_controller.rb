@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_filter :find_namespace
-  before_filter :authenticate!, except: [:index, :show, :source, :random, :next, :previous]
+  before_filter :authenticate!, except: [
+    :index, :show, :rendered, :source, :random, :next, :previous
+  ]
 
   # GET /:namespace_id
   def index
@@ -16,6 +18,11 @@ class PagesController < ApplicationController
 
   # GET /:namespace_id/:id
   def show
+    find_with_redirect
+  end
+
+  # GET /:namespace_id/:id/rendered
+  def rendered
     find_with_redirect
   end
 
