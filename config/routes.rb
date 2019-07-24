@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   root 'namespaces#index'
 
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
       member do
         get 'rendered'
         get 'source'
+        get 'markdown'
+        get 'urls'
         get 'next'
         get 'previous'
       end

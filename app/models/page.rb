@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: pages
@@ -49,6 +50,14 @@ class Page < ActiveRecord::Base
     self.slug = (title.try(:parameterize) || SecureRandom.hex(11)) if slug.blank?
   end
 
+  def preview
+    output = to_plain && to_plain
+      .tr("\n", ' ')
+      .truncate(200)
+
+    output.blank? ? nil : output
+  end
+
   def to_s
     (title.blank? ? nil : title) || preview.try(:truncate, 25) || slug
   end
@@ -57,19 +66,26 @@ class Page < ActiveRecord::Base
     Kramdown::Document.new(content || '').to_html
   end
 
-  def plain
+  def to_markdown
+    case mode
+    when 'plain'
+      content
+    when 'wysiwyg'
+      delta && Delta.to_markdown(delta['ops'])
+    when 'html'
+      nil
+    end
+  end
+
+  def to_urls
+    URI.extract(to_markdown || html)
+  end
+
+  def to_plain
     delta && delta['ops']
       .map { |op| op['insert'].strip if op['insert'].is_a? String }
       .compact
       .join(' ')
-      .strip
-  end
-
-  def preview
-    output = plain && plain
-      .tr("\n", ' ')
-      .truncate(200)
-
-    output.blank? ? nil : output
+      .strip || content
   end
 end

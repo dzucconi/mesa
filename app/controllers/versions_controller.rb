@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class VersionsController < ApplicationController
   before_filter :find_namespaced_page
 

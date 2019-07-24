@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PagesController < ApplicationController
   before_filter :find_namespace
   before_filter :authenticate!, except: [
@@ -96,22 +97,28 @@ class PagesController < ApplicationController
   # GET /:namespace_id/:id/source
   def source
     find_with_redirect do
-      render text: @page.content, content_type: Mime::TEXT
+      render text: @page.to_plain, content_type: Mime::TEXT
+    end
+  end
+
+  # GET /:namespace_id/:id/markdown
+  def markdown
+    find_with_redirect do
+      render text: @page.to_markdown, content_type: Mime::TEXT
+    end
+  end
+
+  # GET /:namespace_id/:id/urls
+  def urls
+    find_with_redirect do
+      render json: { urls: @page.to_urls }
     end
   end
 
   private
 
   def page_params
-    params.require(:page).permit(
-      :slug,
-      :title,
-      :delta,
-      :html,
-      :content,
-      :mode,
-      :status
-    )
+    params.require(:page).permit(:slug, :title, :delta, :html, :content, :mode, :status)
   end
 
   def find_namespace
