@@ -85,6 +85,6 @@ class Page < ActiveRecord::Base
       .map { |op| op['insert'].strip if op['insert'].is_a? String }
       .compact
       .join(' ')
-      .strip
+      .strip || content
   end
 end
