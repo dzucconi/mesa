@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require File.expand_path('../support/auth_helper', __FILE__)
 
 RSpec.configure do |config|

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PagesController < ApplicationController
   before_filter :find_namespace
   before_filter :authenticate!, except: [
@@ -117,15 +118,7 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(
-      :slug,
-      :title,
-      :delta,
-      :html,
-      :content,
-      :mode,
-      :status
-    )
+    params.require(:page).permit(:slug, :title, :delta, :html, :content, :mode, :status)
   end
 
   def find_namespace

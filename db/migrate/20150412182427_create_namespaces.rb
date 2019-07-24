@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateNamespaces < ActiveRecord::Migration
   def change
     create_table :namespaces do |t|

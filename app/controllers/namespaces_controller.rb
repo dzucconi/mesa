@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class NamespacesController < ApplicationController
   before_filter :authenticate!, except: [:index, :show]
 
