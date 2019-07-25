@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-ruby '2.3.0'
+ruby '2.4.6'
 source 'https://rubygems.org'
 
 gem 'puma'
-gem 'rails', '4.2.4'
-gem 'pg'
+gem 'rails', '4.2.11.1'
+gem 'pg', '~> 0.21'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
