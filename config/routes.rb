@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'namespaces#index'
 
@@ -6,8 +7,8 @@ Rails.application.routes.draw do
     scope module: :v1 do
       get '', to: 'root#index', as: :root
 
-      resources :namespaces, only: [:index, :show] do
-        resources :pages, only: [:index, :show]
+      resources :namespaces, only: %i[index show] do
+        resources :pages, only: %i[index show]
       end
     end
   end
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
         get 'previous'
       end
 
-      resources :uploads, only: [:index, :create]
+      resources :uploads, only: %i[index create]
       resources :versions, only: [:index] do
         member do
           post 'restore'

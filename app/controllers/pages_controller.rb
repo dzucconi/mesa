@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class PagesController < ApplicationController
   before_filter :find_namespace
-  before_filter :authenticate!, except: [
-    :index, :show, :rendered, :source, :random, :next, :previous
+  before_filter :authenticate!, except: %i[
+    index show rendered source random next previous
   ]
 
   # GET /:namespace_id
@@ -124,7 +125,7 @@ class PagesController < ApplicationController
   def find_namespace
     @namespace = Namespace.find_by_slug!(params[:namespace_id])
     authenticate! if @namespace.locked?
-  rescue
+  rescue StandardError
     redirect_to new_namespace_path name: params[:namespace_id]
   end
 

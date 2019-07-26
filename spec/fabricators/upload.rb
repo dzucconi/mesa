@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Fabricator(:upload) do
   file_name 'uploaded.jpg'
   file_size 666

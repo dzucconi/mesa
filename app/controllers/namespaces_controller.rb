@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class NamespacesController < ApplicationController
-  before_filter :authenticate!, except: [:index, :show]
+  before_filter :authenticate!, except: %i[index show]
 
   # GET /
   def index

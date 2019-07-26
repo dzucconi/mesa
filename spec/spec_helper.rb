@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require File.expand_path('../support/auth_helper', __FILE__)
+
+require File.expand_path('support/auth_helper', __dir__)
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

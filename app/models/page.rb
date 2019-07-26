@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: pages
@@ -22,9 +23,9 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug
 
-  enum mode: [:wysiwyg, :html, :plain]
+  enum mode: %i[wysiwyg html plain]
 
-  has_paper_trail only: [:content, :delta]
+  has_paper_trail only: %i[content delta]
 
   validates :namespace_id, presence: true
   validates :slug, presence: true
@@ -51,9 +52,9 @@ class Page < ActiveRecord::Base
   end
 
   def preview
-    output = to_plain && to_plain
-      .tr("\n", ' ')
-      .truncate(200)
+    output = to_plain
+      &.tr("\n", ' ')
+      &.truncate(200)
 
     output.blank? ? nil : output
   end

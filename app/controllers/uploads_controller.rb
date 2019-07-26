@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UploadsController < ApplicationController
   before_filter :find_namespaced_page
 
@@ -27,7 +28,7 @@ class UploadsController < ApplicationController
     @namespace = Namespace.find_by_slug!(params[:namespace_id])
     authenticate! if @namespace.locked?
     @page = @namespace.pages.includes(:uploads).find_by_slug!(params[:page_id])
-  rescue
+  rescue StandardError
     redirect_to new_namespace_page_path(params[:namespace_id], id: params[:page_id])
   end
 end

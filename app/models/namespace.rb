@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: namespaces
@@ -27,11 +28,11 @@ class Namespace < ActiveRecord::Base
     state :locked
 
     event :publish do
-      transitions from: [:locked, :published], to: :published
+      transitions from: %i[locked published], to: :published
     end
 
     event :retract do
-      transitions from: [:locked, :published], to: :locked
+      transitions from: %i[locked published], to: :locked
     end
   end
 

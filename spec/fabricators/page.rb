@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Fabricator(:page) do
   title 'Impression, Sunrise'
   namespace { Fabricate(:namespace) }

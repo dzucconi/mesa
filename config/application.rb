@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require File.expand_path('../boot', __FILE__)
+
+require File.expand_path('boot', __dir__)
 
 require 'active_model/railtie'
 require 'active_job/railtie'
@@ -30,7 +31,7 @@ module Mesa
     config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: %i(options get)
+        resource '*', headers: :any, methods: %i[options get]
       end
     end
   end

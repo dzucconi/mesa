@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::V1::PagesController, type: :controller do
@@ -19,7 +20,7 @@ RSpec.describe Api::V1::PagesController, type: :controller do
       expect(parsed['total_pages']).to be(1)
       expect(parsed['_embedded']['pages']).to be_a(Array)
       expect(parsed['_embedded']['pages'].first['id']).to eq(page.id)
-      expect(parsed['_links'].keys).to eq(%w(self first next prev last))
+      expect(parsed['_links'].keys).to eq(%w[self first next prev last])
     end
   end
 
@@ -30,7 +31,7 @@ RSpec.describe Api::V1::PagesController, type: :controller do
       parsed = JSON.parse(response.body)
       expect(parsed['id']).to eq(page.id)
       expect(parsed['title']).to eq(page.title)
-      expect(parsed['_links'].keys).to eq(%w(self namespace))
+      expect(parsed['_links'].keys).to eq(%w[self namespace])
     end
   end
 end

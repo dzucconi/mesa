@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UploadsController, type: :controller do
@@ -44,7 +45,7 @@ RSpec.describe UploadsController, type: :controller do
     it 'renders the JSON of the PUT and GET urls for the attached file' do
       post :create, namespace_id: namespace.slug, page_id: page.slug, upload: valid_attributes
       body = JSON.parse(response.body)
-      expect(body.keys).to eq %w(put get)
+      expect(body.keys).to eq %w[put get]
     end
   end
 end

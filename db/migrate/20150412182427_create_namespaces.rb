@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateNamespaces < ActiveRecord::Migration
   def change
     create_table :namespaces do |t|
@@ -12,6 +13,6 @@ class CreateNamespaces < ActiveRecord::Migration
 
     add_column :pages, :namespace_id, :integer
     add_index :pages, :namespace_id
-    add_index :pages, [:slug, :namespace_id], unique: true
+    add_index :pages, %i[slug namespace_id], unique: true
   end
 end

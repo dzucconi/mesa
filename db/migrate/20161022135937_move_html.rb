@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class MoveHtml < ActiveRecord::Migration
   def up
     ActiveRecord::Base.record_timestamps = false

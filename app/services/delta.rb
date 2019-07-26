@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Delta
   def self.to_markdown(ops)
     ops.each_with_index.reduce('') do |memo, (op, idx)|
@@ -7,9 +8,7 @@ module Delta
 
       insert = "![](#{insert['image']})" if insert.is_a?(Hash) && insert['image']
 
-      if op.dig('attributes', 'link')
-        insert = "[#{insert}](#{op['attributes']['link']})"
-      end
+      insert = "[#{insert}](#{op['attributes']['link']})" if op.dig('attributes', 'link')
 
       insert = "**#{insert}**" if op.dig('attributes', 'bold')
 
