@@ -9,6 +9,8 @@ module Api
         :delta,
         :content,
         :html,
+        :markdown,
+        :urls,
         :created_at,
         :updated_at,
         :_links
@@ -20,6 +22,14 @@ module Api
         else
           object.html
         end
+      end
+
+      def markdown
+        object.to_markdown
+      end
+
+      def urls
+        object.to_urls
       end
 
       def _links
