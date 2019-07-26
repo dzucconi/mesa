@@ -80,8 +80,12 @@ class Page < ActiveRecord::Base
 
   def to_urls
     URI.extract(to_markdown || html).select do |possible_url|
-      uri = URI.parse(possible_url)
-      %w[http https].include?(uri.scheme)
+      begin
+        uri = URI.parse(possible_url)
+        %w[http https].include?(uri.scheme)
+      rescue StandardError
+        false
+      end
     end
   end
 
