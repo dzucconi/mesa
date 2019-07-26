@@ -5,7 +5,7 @@ module Delta
       insert = op['insert']
       next_op = ops[idx + 1]
 
-      insert = "![](#{insert['image']})" if insert['image']
+      insert = "![](#{insert['image']})" if insert.is_a?(Hash) && insert['image']
 
       if op.dig('attributes', 'link')
         insert = "[#{insert}](#{op['attributes']['link']})"
