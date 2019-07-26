@@ -25,7 +25,7 @@ module Api
       end
 
       def markdown
-        object.to_markdown
+        object.to_markdown.to_json
       end
 
       def urls
