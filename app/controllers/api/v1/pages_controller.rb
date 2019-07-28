@@ -7,7 +7,9 @@ module Api
 
       # GET /api/:namespace_id/pages
       def index
-        @pages = @namespace.pages.page(params[:page]).per(params[:per])
+        @pages = @namespace.pages
+        @pages = @pages.unscope(:order).order(Hash[params[:sort_by], params[:direction]]) if params[:sort_by] && params[:direction]
+        @pages = @pages.page(params[:page]).per(params[:per])
         render_collection @pages, serializer: PageSerializer
       end
 
